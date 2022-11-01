@@ -29,10 +29,22 @@
                 <div>
                     <table style="width: 100%">
                         <tr>
-                            <td style="width: 40%"></td>
-                            <td style="width: 60%; text-align: center; font-size: 14px">
-                                <b style="font-family: 'Arial';font-size: 18px">BUKTI TANDA TERIMA BARANG</b> <br>
-                                {{ $good->good_receipt_number }}
+                            <td style="width: 25%"></td>
+                            <td style="width: 60%; text-align: left; font-size: 14px">
+
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td style="width: 20%"></td>
+                                        <td style="width: 40%">
+                                            <b style="font-family: 'Arial';font-size: 18px">SURAT JALAN</b> <br>
+                                            <span>No: {{ $permit->travel_permit_number }}</span>
+                                        </td>
+                                        <td style="width: 40%">
+                                            <br>
+                                            <span>Kepada: {{ $permit->company}} {{ (($permit->company!=null and $permit->name!=null)?' - ' :'') }} {{ $permit->name }}</span>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                     </table>
@@ -40,9 +52,10 @@
             </div>
 
             <div style="padding: 0 70px; font-size:14px;height: 417px">
-                <p>Pada hari {{ $good->created_at->isoFormat('dddd') }}, tanggal {{ $good->created_at->isoFormat('D MMMM Y') }}, telah diterima barang-barang dengan rincian sebagai
-                    berikut:</p>
-
+                <p style="text-align: justify;text-justify: inter-word;">Pada
+                    hari {{ $permit->created_at->isoFormat('dddd') }},
+                    tanggal {{ $permit->created_at->isoFormat('D MMMM Y') }}, kami kirimkan barang-barang dengan rincian
+                    sebagai berikut melalui kendaraan dengan No. Pol. {{ $permit->vehicle_number }}</p>
                 <div style="min-height: 135px;">
                     <table class="table" style="width: 100%; font-size: 12px">
                         <tr style="background-color: #ACEAA0; font-weight: bold; text-align: center">
@@ -51,25 +64,23 @@
                             <td>Jumlah</td>
                             <td>Keterangan</td>
                         </tr>
-                        @foreach($good->goodReceiptDetails as $index=>$detail)
+                        @foreach($permit->travelPermitDetails as $index=>$detail)
                             <tr>
                                 <td style="text-align: center">{{ $index+1 }}</td>
                                 <td>{{ $detail->material->name }}</td>
                                 <td style="text-align: center">{{ $detail->quantity.' '.$detail->quantity_type }}</td>
-                                <td>
-                                    {{ $detail->note }}
-                                </td>
+                                <td>{{ $detail->note }}</td>
                             </tr>
                         @endforeach
-
                     </table>
                 </div>
-                <p>
-                    Barang telah diterima dalam keadaan <b>{{ $good->condition }}</b> untuk dapat dipergunakan dengan sebagaimana mestinya.
-                </p>
+                <p style="text-align: justify;text-justify: inter-word;">Barang telah diterima dalam keadaan
+                    <b>{{ $permit->condition }}</b> untuk dapat dipergunakan dengan sebagaimana mestinya.</p>
                 <table style="width: 100%">
                     <tr>
                         <td style="text-align: center;">Pengirim</td>
+                        <td></td>
+                        <td style="text-align: center">Sopir</td>
                         <td></td>
                         <td style="text-align: center">Penerima</td>
                     </tr>
@@ -79,9 +90,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: center">{{ $good->sender }}</td>
+                        <td style="text-align: center">(..........................................)</td>
                         <td></td>
-                        <td style="text-align: center">{{ $good->user->name }}</td>
+                        <td style="text-align: center">(..........................................)</td>
+                        <td></td>
+                        <td style="text-align: center">(..........................................)</td>
+{{--                        'user_id', 'driver_id', 'report_id','travel_permit_number', 'name', 'company', 'no_phone',--}}
+{{--                        'address', 'vehicle', 'vehicle_number',--}}
                     </tr>
                 </table>
             </div>

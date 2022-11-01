@@ -1,9 +1,9 @@
 <x-admin>
     <x-slot name="title">
-        Ubah data driver
+        Ubah data material
     </x-slot>
     <x-slot name="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('driver.index') }}">{{__('Driver')}}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('material.index') }}">{{__('material')}}</a></li>
     </x-slot>
 
     <div class="container-fluid">
@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <livewire:form.driver action="update" :dataId="$id"/>
+                        <livewire:form.material action="update" :dataId="$id"/>
                     </div>
                 </div>
             </div>

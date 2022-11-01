@@ -40,7 +40,10 @@
             </div>
 
             <div style="padding: 0 70px; font-size:14px;height: 417px">
-                <p>Pada hari {{ $good->created_at->isoFormat('dddd') }}, tanggal {{ $good->created_at->isoFormat('D MMMM Y') }}, telah diterima barang-barang dengan rincian sebagai
+                <p style="text-align: justify;text-justify: inter-word;">Pada
+                    hari {{ $good->created_at->isoFormat('dddd') }},
+                    tanggal {{ $good->created_at->isoFormat('D MMMM Y') }}, telah diterima barang-barang dengan rincian
+                    sebagai
                     berikut:</p>
 
                 <div style="min-height: 135px;">
@@ -64,9 +67,8 @@
 
                     </table>
                 </div>
-                <p>
-                    Barang telah diterima dalam keadaan <b>{{ $good->condition }}</b> untuk dapat dipergunakan dengan sebagaimana mestinya.
-                </p>
+                <p style="text-align: justify;text-justify: inter-word;">Barang telah diterima dalam keadaan
+                    <b>{{ $good->condition }}</b> untuk dapat dipergunakan dengan sebagaimana mestinya.</p>
                 <table style="width: 100%">
                     <tr>
                         <td style="text-align: center;">Pengirim</td>
@@ -79,9 +81,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: center">{{ $good->sender }}</td>
+                        <td style="text-align: center">(..........................................)</td>
                         <td></td>
-                        <td style="text-align: center">{{ $good->user->name }}</td>
+                        <td style="text-align: center">(..........................................)</td>
                     </tr>
                 </table>
             </div>

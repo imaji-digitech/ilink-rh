@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\Table;
 
-use App\Models\ArticleView;
-use App\Models\DownloadLink;
-use App\Models\DownloadLinkPermission;
-use App\Models\Email;
-use App\Models\EmailReceiver;
+use App\Models\GoodReceipt;
+use App\Models\Driver;
+use App\Models\Invoice;
+use App\Models\Material;
+use App\Models\MaterialMutation;
+use App\Models\Receipt;
+use App\Models\TravelPermit;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -75,135 +77,40 @@ class Main extends Component
     public function get_pagination_data()
     {
         switch ($this->name) {
-            case 'mail':
-                $mails = Email::orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.mail', "mails" => $mails,];
+            case 'driver':
+                $data = Driver::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.driver', "datas" => $data,];
                 break;
-            case 'receiver':
-                $receiver = EmailReceiver::whereEmailId($this->dataId)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.receiver', "receivers" => $receiver,];
+            case 'good-receipt':
+                $data = GoodReceipt::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.good-receipt', "datas" => $data,];
                 break;
-            case 'user':
-                $users = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.user', "users" => $users,];
+            case 'material':
+                $data = Material::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.material', "datas" => $data,];
                 break;
-            case 'budget':
-                $budgets = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.budget', "budgets" => $budgets,];
+            case 'material-mutation':
+                $data = MaterialMutation::whereMaterialId($this->dataId)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.material-mutation', "datas" => $data,];
                 break;
-            case 'report':
-                $reports = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.report', "reports" => $reports,];
+            case 'material-mutation-all':
+                $data = MaterialMutation::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.material-mutation-all', "datas" => $data,];
                 break;
             case 'invoice':
-                $invoices = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.invoice', "invoices" => $invoices,];
+                $data = Invoice::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.invoice', "datas" => $data,];
                 break;
-            case 'content':
-                $contents = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.content', "contents" => $contents,];
+            case 'receipt':
+                $data = Receipt::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.receipt', "datas" => $data,];
                 break;
-            case 'tag':
-                $tags = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.tag', "tags" => $tags,];
-                break;
-            case 'campaign':
-                $campaigns = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.campaign', "campaigns" => $campaigns,];
-                break;
-            case 'gallery':
-                $gallerys = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.gallery', "gallerys" => $gallerys,];
-                break;
-            case 'faq':
-                $faqs = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.faq', "faqs" => $faqs,];
-                break;
-            case 'team':
-                $teams = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.team', "teams" => $teams,];
-                break;
-            case 'testimonial':
-                $testimonials = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.testimonial', "testimonials" => $testimonials,];
+            case 'travel-permit':
+                $data = TravelPermit::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.travel-permit', "datas" => $data,];
                 break;
 
-            case 'partner':
-                $partners = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.partner', "partners" => $partners,];
-                break;
-            case 'sosmed':
-                $sosmeds = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
 
-                return ["view" => 'livewire.table.sosmed', "sosmeds" => $sosmeds,];
-                break;
-            case 'vendor':
-                $vendors = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.vendor', "vendors" => $vendors,];
-                break;
-            case 'presence':
-                $this->sortField = "created_at";
-                $presences = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.presence', "presences" => $presences,];
-                break;
-            case 'salary':
-                $salaries = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.salary', "salaries" => $salaries,];
-                break;
-            case 'link':
-                $links = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.link', "links" => $links, "data" => array_to_object(['href' => ['create_new' => route('admin.link.create'), 'create_new_text' => 'Buat Data Link Shir', 'export' => '', 'export_text' => 'Export']])];
-                break;
-            case 'article':
-                $articles = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.article', "articles" => $articles,];
-                break;
-            case 'article-show':
-                $articles = ArticleView::whereArticleId($this->dataId)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.article-show', "articles" => $articles,];
-                break;
-            case 'on-news':
-                $onNews = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-
-                return ["view" => 'livewire.table.on-news', "onNews" => $onNews,];
-                break;
-
-            case 'proof-cash':
-                $proofCash = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.proof-cash', "proofCashs" => $proofCash,];
-                break;
-            case 'finance':
-                $finances = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.finance', "finances" => $finances,];
-                break;
-            case 'finance-note':
-                $finances = $this->model::whereFinanceId($this->dataId)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.finance-note', "finances" => $finances,];
-                break;
-            case 'download-link':
-                $downloadLink = DownloadLink::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.download-link', "downloadLinks" => $downloadLink,];
-                break;
-            case 'download-link-permission':
-                $downloadLink = DownloadLinkPermission::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.download-link-permission', "downloadLinks" => $downloadLink,];
-                break;
-
-            case 'collaboration-file':
-                $collaborationFiles = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.collaboration', "collaborationFiles" => $collaborationFiles,];
-                break;
             default:
                 # code...
                 break;

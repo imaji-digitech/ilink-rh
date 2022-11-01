@@ -2,24 +2,28 @@
 
 namespace App\Http\Livewire\Form;
 
+use App\Models\GoodReceipt;
+use App\Models\Material;
 use App\Models\TravelPermitDetail;
 use Livewire\Component;
-use App\Models\ReceiptDetail as Model;
+use App\Models\GoodReceiptDetail as Model;
 
-class ReceiptDetail extends Component
+class GoodReceiptDetail extends Component
 {
     public $data;
     public $receiptId;
     public $receipt;
+    public $optionMaterial;
 
     public function mount(){
         $this->setData();
+        $this->optionMaterial= eloquent_to_options(Material::get(),'id','name');
 
     }
     public function setData(){
         $this->data= form_model(Model::class);
-        $this->data['receipt_id']=$this->receiptId;
-        $this->receipt= \App\Models\Receipt::find($this->receiptId);
+        $this->data['good_receipt_id']=$this->receiptId;
+        $this->receipt= GoodReceipt::find($this->receiptId);
     }
     public function create(){
         $this->validate();
@@ -40,6 +44,6 @@ class ReceiptDetail extends Component
 
     public function render()
     {
-        return view('livewire.form.receipt-detail');
+        return view('livewire.form.good-receipt-detail');
     }
 }

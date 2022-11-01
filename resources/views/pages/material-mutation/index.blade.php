@@ -7,8 +7,8 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('material.create') }}" class="btn btn-primary">Tambah data material</a>
-                    <livewire:table.main name="material"/>
+                    <a href="{{ route('material-mutation.create') }}" class="btn btn-primary">Mutasi material</a>
+                    <livewire:table.main name="material-mutation-all"/>
                 </div>
             </div>
         </div>

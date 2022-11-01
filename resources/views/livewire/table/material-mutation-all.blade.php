@@ -6,6 +6,9 @@
                 <th><a wire:click.prevent="sortBy('id')" role="button" href="#">
                         # @include('components.sort-icon', ['field' => 'id'])
                     </a></th>
+                <th><a wire:click.prevent="sortBy('material_id')" role="button" href="#">
+                        Material @include('components.sort-icon', ['field' => 'material_id'])
+                    </a></th>
                 <th><a wire:click.prevent="sortBy('user_id')" role="button" href="#">
                         PIC @include('components.sort-icon', ['field' => 'user_id'])
                     </a></th>
@@ -21,6 +24,7 @@
             @foreach ($datas as $index=>$data)
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
                     <td>{{ $data->created_at }}</td>
+                    <td>{{ $data->material->name }}</td>
                     <td>{{ $data->user->name }}</td>
                     <td>{{ $data->mutationStatus->title }}</td>
                     <td>{{ thousand_format($data->amount) }}</td>

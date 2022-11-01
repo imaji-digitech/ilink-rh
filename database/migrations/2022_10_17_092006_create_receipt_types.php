@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvoiceStatuses extends Migration
+class CreateReceiptTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInvoiceStatuses extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_statuses', function (Blueprint $table) {
+        Schema::create('receipt_types', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->timestamps();

@@ -5,6 +5,7 @@
             <label class="form-label">{{$title}}</label>
         @endif
         <select wire:model{{$defer?'.defer':''}}="{{ $model }}" {{ $attributes->merge(['class'=>'form-select digits']) }}>
+            <option></option>
             @for($i=0;$i<count($options) ;$i++)
                 <option value="{{$options[$i]['value']}}">
                     {{$options[$i]['title']}}

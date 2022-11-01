@@ -2,17 +2,17 @@
     <x-data-table :model="$datas">
         <x-slot name="head">
             <tr>
+
                 <th><a wire:click.prevent="sortBy('id')" role="button" href="#">
                         #@include('components.sort-icon', ['field' => 'id'])
-                    </a></th>
-                <th><a wire:click.prevent="sortBy('receipt_type_id')" role="button" href="#">
-                        Kwitansi @include('components.sort-icon', ['field' => 'receipt_type_id'])
                     </a></th>
                 <th><a wire:click.prevent="sortBy('user_id')" role="button" href="#">
                         PIC @include('components.sort-icon', ['field' => 'user_id'])
                     </a></th>
-                <th>Nama</th>
-                <th>No HP</th>
+                <th><a wire:click.prevent="sortBy('user_id')" role="button" href="#">
+                        Kendaraan @include('components.sort-icon', ['field' => 'user_id'])
+                    </a></th>
+                <th>Nama / Perusahaan</th>
                 <th>Alamat</th>
                 <th>Aksi</th>
             </tr>
@@ -22,12 +22,13 @@
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
                     <td>{{ $index+1 }}</td>
                     <td>{{ $data->user->name }}</td>
-                    <td>{{ $data->receiptType->title }}</td>
-                    <td>{{ $data->name }}</td>
-                    <td>{{ $data->no_phone }}</td>
+                    <td>{{ $data->vehicle }} / {{ $data->vehicle_number }}</td>
+                    <td>{{ $data->name." ($data->no_phone)" }} <br> <b>{{ $data->company }}</b></td>
                     <td>{{ $data->address }}</td>
                     <td class="whitespace-no-wrap row-action--icon">
-
+                            <a href="{{ route('travel-permit.show',$data->id) }}" class="btn btn-primary m-1">Detail</a>
+                            <a href="{{ route('travel-permit.edit',$data->id) }}" class="btn btn-secondary m-1">Ubah</a>
+                            <a href="{{ route('travel-permit.edit',$data->id) }}" class="btn btn-success m-1">Unduh</a>
                     </td>
                 </tr>
             @endforeach

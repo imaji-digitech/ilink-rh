@@ -8,194 +8,194 @@
 {{--    <title>{{ 'NOTA PEMBAYARAN - '.$transaction->transaction->no_invoice.' - '.$transaction->transaction->user->name }}</title>--}}
     <style>
         @page {
-            margin: 0in;
+            margin: 0;
         }
 
-        body {
-            background-image: url({{ public_path('asset-pdf/template_recycle_hub.jpg') }});
-            background-position: top left;
-            background-repeat: no-repeat;
-            background-size: 100%;
-            width: 100%;
-            height: 100%;
-        }
+
         table, th, td {
-            /*border: 1px solid black;*/
             border-collapse: collapse;
         }
     </style>
 </head>
 <body >
 <main style="width:100%;padding: 0 0" id="content">
-    <div style="height: 150px"></div>
-    <div style="padding: 0 10px">
-        <table style="font-size: 11px;width: 100%">
-            <tr>
-                <td style="width: 70px"><b>Customer</b></td>
-                <td style="width: 10px">:</td>
-                <td style="width: 260px"></td>
-                <td style="width: 70px"><b>No. Invoice</b></td>
-                <td style="width: 10px">:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td style="width: 70px"><b>No Telp</b></td>
-                <td style="width: 10px">:</td>
-                <td style="width: 260px"></td>
-                <td style="width: 70px"><b>Tanggal</b></td>
-                <td style="width: 10px">:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td style="width: 70px"><b>Alamat</b></td>
-                <td style="width: 10px">:</td>
-                <td style="width: 260px"></td>
-                <td style="width: 70px"><b>Pembayaran</b></td>
-                <td style="width: 10px">:</td>
-                <td></td>
-            </tr>
-        </table>
-{{--        @php($detail=$transaction->transactionReturnDetails)--}}
-        <table bordercolor="#000000" style="margin-top:10px;width: 100%; font-size: 11px">
-            <tr style="text-align: center">
-                <th style="border: .5px solid;padding-top:0;padding-bottom: 5px">
-                    Nama Barang
-                </th>
-                <th style="border: .5px solid;padding-top:0;padding-bottom: 5px;width: 60px">
-                    Qty
-                </th>
-                <th style="border: .5px solid;padding-top:0;padding-bottom: 5px;width: 100px">
-                    Harga Satuan
-                </th>
-                <th style="border: .5px solid;padding-top:0;padding-bottom: 5px"> Total
-                </th>
-            </tr>
-            @for($i=0;$i<10;$i++)
+    <img src="{{ public_path('asset-pdf/receipt_recycle_hub.jpg') }}" style="width: 100%; position: absolute" alt="">
+    <div style="z-index: 2; position: absolute; width: 100%">
+        <div style="height: 150px"></div>
+        <div style="padding: 0 70px">
+            <table style="font-size: 11px;width: 100%">
                 <tr>
-                    <td style="text-align:left;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
-
-                    </td>
-                    <td style="text-align:center;height:12px;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
-
-                    </td>
-                    <td style="text-align:right;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
-
-                    </td>
-                    <td style="text-align:right;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
-
-                    </td>
+                    <td style="width: 70px"><b>Perusahaan</b></td>
+                    <td style="width: 10px">:</td>
+                    <td style="width: 260px">{{ $receipt->company}} {{ (($receipt->company!=null and $receipt->name!=null)?' - ' :'') }} {{ $receipt->name }}  </td>
+                    <td style="width: 70px"><b>No. Kwitansi</b></td>
+                    <td style="width: 10px">:</td>
+                    <td>{{ $receipt->receipt_number }}</td>
                 </tr>
-
-            @endfor
-            <tr>
-                <td></td>
-                <td colspan="2" style="text-align:right;border: .5px solid;">Sub total :</td>
-                <td style="border: .5px solid"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td colspan="2" style="text-align:right;border: .5px solid;">Pajak :</td>
-                <td style="border: .5px solid">0</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td colspan="2" style="text-align:right;border: .5px solid;"><b>Total :</b></td>
-                <td style="border: .5px solid"></td>
-            </tr>
-        </table>
-        <br>
-
-        <table style="width: 100%;font-size: 12px;text-align: center">
-            <tr>
-                <td style="width: 50%"><b>Penerima/Pembeli</b></td>
-                <td style="width: 50%"><b>Sociopreneur Community</b></td>
-            </tr>
-        </table>
-
-
-    </div>
-    <div style="height: 230px"></div>
-
-    <div style="padding: 0 10px">
-        <table style="font-size: 11px;width: 100%">
-            <tr>
-                <td style="width: 70px"><b>Customer</b></td>
-                <td style="width: 10px">:</td>
-                <td style="width: 260px"></td>
-                <td style="width: 70px"><b>No. Invoice</b></td>
-                <td style="width: 10px">:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td style="width: 70px"><b>No Telp</b></td>
-                <td style="width: 10px">:</td>
-                <td style="width: 260px"></td>
-                <td style="width: 70px"><b>Tanggal</b></td>
-                <td style="width: 10px">:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td style="width: 70px"><b>Alamat</b></td>
-                <td style="width: 10px">:</td>
-                <td style="width: 260px"></td>
-                <td style="width: 70px"><b>Pembayaran</b></td>
-                <td style="width: 10px">:</td>
-                <td></td>
-            </tr>
-        </table>
-        {{--        @php($detail=$transaction->transactionReturnDetails)--}}
-        <table bordercolor="#000000" style="margin-top:10px;width: 100%; font-size: 11px">
-            <tr style="text-align: center">
-                <th style="border: .5px solid;padding-top:0;padding-bottom: 5px">
-                    Nama Barang
-                </th>
-                <th style="border: .5px solid;padding-top:0;padding-bottom: 5px;width: 60px">
-                    Qty
-                </th>
-                <th style="border: .5px solid;padding-top:0;padding-bottom: 5px;width: 100px">
-                    Harga Satuan
-                </th>
-                <th style="border: .5px solid;padding-top:0;padding-bottom: 5px"> Total
-                </th>
-            </tr>
-            @for($i=0;$i<10;$i++)
                 <tr>
-                    <td style="text-align:left;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
-
-                    </td>
-                    <td style="text-align:center;height:12px;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
-
-                    </td>
-                    <td style="text-align:right;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
-
-                    </td>
-                    <td style="text-align:right;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
-
-                    </td>
+                    <td style="width: 70px"><b>No Telp</b></td>
+                    <td style="width: 10px">:</td>
+                    <td style="width: 260px">{{ $receipt->no_phone  }}</td>
+                    <td style="width: 70px"><b>No. Refrensi</b></td>
+                    <td style="width: 10px">:</td>
+                    <td>{{ $receipt->ref_number }}</td>
                 </tr>
+                <tr>
+                    <td style="width: 70px"><b>Alamat</b></td>
+                    <td style="width: 10px">:</td>
+                    <td style="width: 260px">{{ $receipt->address }}</td>
 
-            @endfor
-            <tr>
-                <td></td>
-                <td colspan="2" style="text-align:right;border: .5px solid; text-align: right">Sub total :</td>
-                <td style="border: .5px solid"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td colspan="2" style="text-align:right;border: .5px solid; text-align: right"><b>Total :</b></td>
-                <td style="border: .5px solid"></td>
-            </tr>
-        </table>
-        <br>
+                    <td style="width: 70px"><b>Tanggal</b></td>
+                    <td style="width: 10px">:</td>
+                    <td>{{ $receipt->created_at->format('d-m-Y') }}</td>
+                </tr>
+            </table>
+            {{--        @php($detail=$transaction->transactionReturnDetails)--}}
+            <table bordercolor="#000000" style="margin-top:10px;width: 100%; font-size: 11px">
+                <tr style="text-align: center">
+                    <th style="border: .5px solid;padding-top:0;padding-bottom: 5px">
+                        Nama Barang
+                    </th>
+                    <th style="border: .5px solid;padding-top:0;padding-bottom: 5px;width: 60px">
+                        Qty
+                    </th>
+                    <th style="border: .5px solid;padding-top:0;padding-bottom: 5px;width: 100px">
+                        Harga Satuan
+                    </th>
+                    <th style="border: .5px solid;padding-top:0;padding-bottom: 5px"> Total
+                    </th>
+                </tr>
+                @php($detail=$receipt->receiptDetails)
 
-        <table style="width: 100%;font-size: 12px;text-align: center">
-            <tr>
-                <td style="width: 50%"><b>Penerima/Pembeli</b></td>
-                <td style="width: 50%"><b>Sociopreneur Community</b></td>
-            </tr>
-        </table>
+                @for($i=0;$i<10;$i++)
+                    <tr>
+                        <td style="text-align:left;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
+                            {{(isset($detail[$i])? $detail[$i]->title: ' ')}}
+                        </td>
+                        <td style="text-align:center;height:12px;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
+                            {{(isset($detail[$i])? $detail[$i]->quantity: ' ')}}
+                        </td>
+                        <td style="text-align:right;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
+                            {{(isset($detail[$i])? thousand_format($detail[$i]->price): ' ')}}
+                        </td>
+                        <td style="text-align:right;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
+                            {{(isset($detail[$i])? thousand_format($detail[$i]->price*$detail[$i]->quantity): ' ')}}
+                        </td>
+                    </tr>
 
+                @endfor
 
+                <tr>
+                    <td></td>
+                    <td colspan="2" style="text-align:right;border: .5px solid;"><b>Total :</b></td>
+                    <td style="border: .5px solid;text-align:right">{{ thousand_format($detail->sum(function ($t){return $t->quantity*$t->price; })) }}</td>
+                </tr>
+            </table>
+            <br>
+
+            <table style="width: 100%;font-size: 12px;text-align: center">
+                <tr>
+                    <td style="width: 50%"><b>Penerima</b></td>
+                    <td style="width: 50%"><b>Imaji Lingkungan</b></td>
+                </tr>
+                <tr>
+                    <td><br><br><br><br><br><br></td>
+                </tr>
+                <tr>
+                    <td style="width: 50%"><b>{{ $receipt->company}} {{ (($receipt->company!=null and $receipt->name!=null)?' - ' :'') }} {{ $receipt->name }}</b></td>
+                    <td style="width: 50%"><b>{{ $receipt->user->name }}</b></td>
+                </tr>
+            </table>
+        </div>
+        <div style="height: 60px;"></div>
+
+        <div style="height: 150px"></div>
+
+        <div style="padding: 0 70px">
+            <table style="font-size: 11px;width: 100%">
+                <tr>
+                    <td style="width: 70px"><b>Perusahaan</b></td>
+                    <td style="width: 10px">:</td>
+                    <td style="width: 260px">{{ $receipt->company.' - ' }} {{ $receipt->name }}  </td>
+                    <td style="width: 70px"><b>No. Kwitansi</b></td>
+                    <td style="width: 10px">:</td>
+                    <td>{{ $receipt->receipt_number }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 70px"><b>No Telp</b></td>
+                    <td style="width: 10px">:</td>
+                    <td style="width: 260px">{{ $receipt->no_phone  }}</td>
+                    <td style="width: 70px"><b>No. Refrensi</b></td>
+                    <td style="width: 10px">:</td>
+                    <td>{{ $receipt->ref_number }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 70px"><b>Alamat</b></td>
+                    <td style="width: 10px">:</td>
+                    <td style="width: 260px">{{ $receipt->address }}</td>
+
+                    <td style="width: 70px"><b>Tanggal</b></td>
+                    <td style="width: 10px">:</td>
+                    <td>{{ $receipt->created_at->format('d-m-Y') }}</td>
+                </tr>
+            </table>
+            {{--        @php($detail=$transaction->transactionReturnDetails)--}}
+            <table bordercolor="#000000" style="margin-top:10px;width: 100%; font-size: 11px">
+                <tr style="text-align: center">
+                    <th style="border: .5px solid;padding-top:0;padding-bottom: 5px">
+                        Nama Barang
+                    </th>
+                    <th style="border: .5px solid;padding-top:0;padding-bottom: 5px;width: 60px">
+                        Qty
+                    </th>
+                    <th style="border: .5px solid;padding-top:0;padding-bottom: 5px;width: 100px">
+                        Harga Satuan
+                    </th>
+                    <th style="border: .5px solid;padding-top:0;padding-bottom: 5px"> Total
+                    </th>
+                </tr>
+                @php($detail=$receipt->receiptDetails)
+
+                @for($i=0;$i<10;$i++)
+                    <tr>
+                        <td style="text-align:left;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
+                            {{(isset($detail[$i])? $detail[$i]->title: ' ')}}
+                        </td>
+                        <td style="text-align:center;height:12px;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
+                            {{(isset($detail[$i])? $detail[$i]->quantity: ' ')}}
+                        </td>
+                        <td style="text-align:right;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
+                            {{(isset($detail[$i])? thousand_format($detail[$i]->price): ' ')}}
+                        </td>
+                        <td style="text-align:right;padding:0 5px;border-right: .5px solid;border-left: .5px solid;{{$i==9?'border-bottom: .5px solid':''}}">
+                            {{(isset($detail[$i])? thousand_format($detail[$i]->price*$detail[$i]->quantity): ' ')}}
+                        </td>
+                    </tr>
+
+                @endfor
+
+                <tr>
+                    <td></td>
+                    <td colspan="2" style="text-align:right;border: .5px solid;"><b>Total :</b></td>
+                    <td style="border: .5px solid">{{ thousand_format($detail->sum(function ($t){return $t->quantity*$t->price; })) }}</td>
+                </tr>
+            </table>
+            <br>
+
+            <table style="width: 100%;font-size: 12px;text-align: center">
+                <tr>
+                    <td style="width: 50%"><b>Penerima</b></td>
+                    <td style="width: 50%"><b>Imaji Lingkungan</b></td>
+                </tr>
+                <tr>
+                    <td><br><br><br><br><br><br></td>
+                </tr>
+                <tr>
+                    <td style="width: 50%"><b>{{ $receipt->company}} {{ (($receipt->company!=null and $receipt->name!=null)?' - ' :'') }} {{ $receipt->name }}</b></td>
+                    <td style="width: 50%"><b>{{ $receipt->user->name }}</b></td>
+                </tr>
+            </table>
+        </div>
     </div>
 
 </main>

@@ -135,7 +135,7 @@
                         <div class="col-6">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('admin.dashboard') }}"><i style="color:#6edde8" data-feather="home"></i></a>
+                                    <a href="{{ route('dashboard') }}"><i style="color:#6edde8" data-feather="home"></i></a>
                                 </li>
                                 @isset($breadcrumb)
                                     {{ $breadcrumb }}

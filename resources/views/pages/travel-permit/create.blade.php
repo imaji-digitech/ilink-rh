@@ -1,9 +1,9 @@
 <x-admin>
     <x-slot name="title">
-        Buat data kwitansi
+        Buat data surat jalan
     </x-slot>
     <x-slot name="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('receipt.index') }}">{{__('kwitansi')}}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('travel-permit.index') }}">{{__('surat jalan')}}</a></li>
     </x-slot>
 
     <div class="container-fluid">
@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <livewire:form.receipt action="create"/>
+                        <livewire:form.travel-permit action="create"/>
                     </div>
                 </div>
             </div>

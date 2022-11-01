@@ -1,0 +1,110 @@
+//php artisan make:migration create_driver
+//php artisan make:migration create_travel_permits
+//php artisan make:migration create_travel_permit_details
+//php artisan make:migration create_invoices
+//php artisan make:migration create_invoice_details
+//php artisan make:migration create_material_types
+//php artisan make:migration create_materials
+php artisan make:migration create_receipts
+php artisan make:migration create_receipt_details
+php artisan make:migration create_reports
+php artisan make:migration create_presences
+
+
+php artisan krlove:generate:model InvoiceStatus
+php artisan krlove:generate:model ReceiptType
+php artisan krlove:generate:model Driver
+php artisan krlove:generate:model TravelPermit
+php artisan krlove:generate:model TravelPermitDetail
+php artisan krlove:generate:model Invoice
+php artisan krlove:generate:model InvoiceDetail
+php artisan krlove:generate:model MaterialType
+php artisan krlove:generate:model Material
+php artisan krlove:generate:model Receipt
+php artisan krlove:generate:model ReceiptDetail
+
+
+reports
+id
+user_id
+note
+
+receipts
+id
+name
+created_at
+address
+no_phone
+note
+receipt_type_id
+user_id
+
+
+receipt_details
+id
+title
+price
+quantity
+quantity_type
+
+
+
+material_types
+id
+name
+//shredded//balling//raw material//residue
+
+material
+material_type_id
+id
+name
+stock
+note
+
+
+
+
+invoice
+id
+user_id
+invoice_status_id
+invoice_number
+account_number
+company
+created_at
+
+invoice_detail
+id
+invoice_id
+title
+price
+quantity
+quantity_type
+note
+
+
+
+travel_permits
+id
+user_id
+name
+company
+no_phone
+address
+drive_id
+vehicle
+number_vehicle
+
+drives
+id
+name
+no_ktp
+address
+no_phone
+
+travel_permit_details
+id
+travel_permits_id
+material_type_id
+quantity
+note

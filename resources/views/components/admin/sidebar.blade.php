@@ -27,166 +27,62 @@
                         </div>
                     </li>
                     <li class="sidebar-main-title">
-                        <div>
-                            <h6>General</h6>
-                        </div>
+                        <div><h6>General</h6></div>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.dashboard') }}">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('dashboard') }}">
                             <i class="fas fa-home"></i><span> Dashboard</span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.calendar-direction') }}">
-                            <i class="fas fa-home"></i><span> Calendar Semua</span>
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('driver.index') }}">
+                            <i class="fas fa-car"></i><span> Driver</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('driver.index') }}">
+                            <i class="fas fa-user"></i><span> User</span>
                         </a>
                     </li>
 
+                    <li class="sidebar-main-title">
+                        <div><h6>Pengolahan</h6></div>
+                    </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.project-base.index') }}">
-                            <i class="fas fa-calendar"></i><span> Project Base</span>
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('material.index') }}">
+                            <i class="fas fa-recycle"></i><span> Material</span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.journal.this-month') }}">
-                            <i class="fa fa-book"></i><span> My Journal</span>
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('material-mutation') }}">
+                            <i class="fas fa-recycle"></i><span> Mutasi material</span>
                         </a>
                     </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.journal') }}">
-                            <i class="fa fa-book"></i><span> Journal Recap</span>
-                        </a>
-                    </li>
-                    @if(auth()->user()->role==1 or auth()->user()->role==2 )
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.user.index') }}">
-                            <i class="fas fa-users"></i><span> Users</span>
-                        </a>
-                    </li>
-                    @endif
-                    @if(auth()->id()==13 or auth()->id()==2 or auth()->id()==5 or auth()->id()==6or auth()->id()==26)
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.presence.index') }}">
-                            <i class="fa fa-calendar-check-o"></i><span> Presensi</span>
-                        </a>
-                    </li>
-                    @endif
-
                     <li class="sidebar-main-title">
-                        <div>
-                            <h6>Administration</h6>
-                        </div>
+                        <div><h6>Surat & keuangan</h6></div>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.mail.index') }}">
-                            <i class="fas fa-envelope"></i><span> Mail</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.finance.index') }}">
-                            <i class="fas fa-money-bill"></i><span> Finance</span>
-                        </a>
-                    </li>
-                    @if(auth()->user()->role==1)
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.budget.index') }}">
-                            <i class="fas fa-wallet"></i><span> Keuangan</span>
-                        </a>
-                    </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.invoice.index') }}">
-                                <i class="fas fa-money-bill-alt"></i><span> Invoice</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.proof-cash.index') }}">
-                                <i class="fas fa-money-bill-alt"></i><span> Kwitansi</span>
-                            </a>
-                        </li>
-                    @endif
-                    @if(auth()->id()==5 or auth()->id()==6 or auth()->id()==14)
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.salary.index') }}">
-                            <i class="fas fa-dollar-sign"></i><span> Salary</span>
-                        </a>
-                    </li>
-                    @endif
-                    <li class="sidebar-main-title">
-                        <div>
-                            <h6>Blogging</h6>
-                        </div>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.content.index') }}">
-                            <i class="fas fa-blog"></i><span> Content</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.link.index') }}">
-                            <i class="fas fa-link"></i><span> Imaji Link</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.on-news.index') }}">
-                            <i class="fas fa-link"></i><span> Link Berita</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.article.index') }}">
-                            <i class="fas fa-book"></i><span> Artikel</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.collaboration-file.index') }}">
-                            <i class="fas fa-book"></i><span> File Kerjasama</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.download-link.index') }}">
-                            <i class="fas fa-book"></i><span> Gdrive share</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.tag.index') }}">
-                            <i class="fas fa-tag"></i><span> Tag</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.sosmed.index') }}">
-                            <i class="fa fa-instagram"></i><span> Sosmed</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.dashboard') }}">
-                            <i class="fas fa-square"></i><span> Campaign (under maintenance)</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.dashboard') }}">
-                            <i class="fas fa-image"></i><span> Gallery (under maintenance)</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.vendor.index') }}">
-                            <i class="fas fa-venus"></i><span> Vendor</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.faq.index') }}">
-                            <i class="fas fa-question"></i><span> FAQ</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.partner.index') }}">
-                            <i class="fa fa-handshake-o"></i><span> Partner</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.testimonial.index') }}">
-                            <i class="fa fa-quote-left"></i><span> Testimonial</span>
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('invoice.index') }}">
+                            <i class="fas fa-inbox"></i><span> Invoice</span>
                         </a>
                     </li>
 
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('receipt.index') }}">
+                            <i class="fas fa-file-archive"></i><span> Kwitansi</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('travel-permit.index') }}">
+                            <i class="fas fa-truck"></i><span> Surat jalan</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('good-receipt.index') }}">
+                            <i class="fas fa-box"></i><span> Terima barang</span>
+                        </a>
+                    </li>
 
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title link-nav">

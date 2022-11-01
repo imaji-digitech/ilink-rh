@@ -1,6 +1,6 @@
 <x-admin>
     <x-slot name="title">
-        Buat data material
+        Buat data mutasi material
     </x-slot>
     <x-slot name="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('material.index') }}">{{__('material')}}</a></li>
@@ -11,7 +11,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <livewire:form.material action="create"/>
+                        <h3>{{ \App\Models\Material::find($id)->name }}</h3>
+                        <livewire:form.material-mutation action="create" :material-id="$id"/>
                     </div>
                 </div>
             </div>

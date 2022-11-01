@@ -1,14 +1,14 @@
 <x-admin>
     <x-slot name="title">
-        Data invoice
+        Data receipt
     </x-slot>
 
     <div class="container-fluid">
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('invoice.create') }}" class="btn btn-primary">Tambah data invoice</a>
-                    <livewire:table.main name="invoice"/>
+                    <a href="{{ route('receipt.create') }}" class="btn btn-primary">Tambah data kwitansi</a>
+                    <livewire:table.main name="receipt"/>
                 </div>
             </div>
         </div>

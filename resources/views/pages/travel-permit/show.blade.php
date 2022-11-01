@@ -1,9 +1,9 @@
 <x-admin>
     <x-slot name="title">
-        Ubah data kwitansi
+        Tambah data barang di surat jalan
     </x-slot>
     <x-slot name="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('driver.index') }}">{{__('travel-permit')}}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('travel-permit.index') }}">{{__('travel-permit')}}</a></li>
     </x-slot>
 
     <div class="container-fluid">
@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <livewire:form.travel-permit action="update" :dataId="$id"/>
+                        <livewire:form.travel-permit-material action="update" :travel-permit-Id="$id"/>
                     </div>
                 </div>
             </div>

@@ -3,14 +3,16 @@
         <x-slot name="head">
             <tr>
                 <th><a wire:click.prevent="sortBy('id')" role="button" href="#">
-                        #@include('components.sort-icon', ['field' => 'id'])
+                        # @include('components.sort-icon', ['field' => 'id'])
                     </a></th>
-                <th><a wire:click.prevent="sortBy('title')" role="button" href="#">
-                        nama driver@include('components.sort-icon', ['field' => 'title'])
+                <th><a wire:click.prevent="sortBy('material_type_id')" role="button" href="#">
+                        Jenis material @include('components.sort-icon', ['field' => 'material_type_id'])
                     </a></th>
-                <th>No HP</th>
-                <th>NIK</th>
-                <th>Alamat</th>
+
+                <th><a wire:click.prevent="sortBy('name')" role="button" href="#">
+                        Material @include('components.sort-icon', ['field' => 'name'])
+                    </a></th>
+                <th>Stock</th>
                 <th>Aksi</th>
             </tr>
         </x-slot>
@@ -18,12 +20,13 @@
             @foreach ($datas as $index=>$data)
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
                     <td>{{ $index+1 }}</td>
+                    <td>{{ $data->materialType->title }}</td>
                     <td>{{ $data->name }}</td>
-                    <td>{{ $data->no_phone }}</td>
-                    <td>{{ $data->no_ktp }}</td>
-                    <td>{{ $data->address }}</td>
+                    <td>{{ thousand_format($data->stock) }}</td>
                     <td class="whitespace-no-wrap row-action--icon">
-
+                        <a href="{{ route('material.show',$data->id) }}" class="btn btn-secondary">Riwayat mutasi</a>
+                        <a href="{{ route('material.mutation.create',$data->id) }}" class="btn btn-primary">Mutasi</a>
+                        <a href="" class="btn btn-danger">Ubah</a>
                     </td>
                 </tr>
             @endforeach

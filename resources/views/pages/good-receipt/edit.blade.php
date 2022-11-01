@@ -1,6 +1,6 @@
 <x-admin>
     <x-slot name="title">
-        Ubah data kwitansi
+        Ubah data tanda terima barang
     </x-slot>
     <x-slot name="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('driver.index') }}">{{__('receipt')}}</a></li>

@@ -1,9 +1,9 @@
 <x-admin>
     <x-slot name="title">
-        Buat data invoice
+        Buat data kwitansi
     </x-slot>
     <x-slot name="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('invoice.index') }}">{{__('Invoice')}}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('receipt.index') }}">{{__('kwitansi')}}</a></li>
     </x-slot>
 
     <div class="container-fluid">
@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <livewire:form.invoice action="create"/>
+                        <livewire:form.receipt action="create"/>
                     </div>
                 </div>
             </div>

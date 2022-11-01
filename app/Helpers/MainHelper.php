@@ -14,7 +14,7 @@ if (!function_exists('array_to_object')) {
     }
 }
 if (!function_exists('eloquent_to_options')) {
-    function eloquent_to_options($array, $value, $title)
+    function eloquent_to_options($array, $value='id', $title='title')
     {
         $arr = array();
         foreach ($array as $index => $a) {
@@ -24,19 +24,22 @@ if (!function_exists('eloquent_to_options')) {
         return $arr;
     }
 }
-if (!function_exists('month_name')){
-    function month_name($month){
-        $monthName=['','Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+if (!function_exists('month_name')) {
+    function month_name($month)
+    {
+        $monthName = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         return $monthName[$month];
     }
 }
-if (!function_exists('numberToRomanRepresentation')){
-    function numberToRomanRepresentation($number) {
+
+if (!function_exists('numberToRomanRepresentation')) {
+    function numberToRomanRepresentation($number)
+    {
         $map = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
         $returnValue = '';
         while ($number > 0) {
             foreach ($map as $roman => $int) {
-                if($number >= $int) {
+                if ($number >= $int) {
                     $number -= $int;
                     $returnValue .= $roman;
                     break;
@@ -53,7 +56,7 @@ if (!function_exists('empty_fallback')) {
      *
      * @return string
      */
-    function empty_fallback ($data)
+    function empty_fallback($data)
     {
         return ($data) ? $data : "-";
     }
@@ -61,15 +64,33 @@ if (!function_exists('empty_fallback')) {
 
 if (!function_exists('create_button')) {
 
-    function create_button ($action, $model)
+    function create_button($action, $model)
     {
         $action = str_replace($model, "", $action);
+        return ['submit_text' => ($action == "update") ? "Update" : "Submit", 'submit_response' => ($action == "update") ? "Updated." : "Submited.", 'submit_response_notyf' => ($action == "update") ? "Data " . $model . " Berhasil di Update" : "Data " . $model . " Berhasil di Tambahkan"];
+    }
+}
+if (!function_exists('blank_model')) {
+    function blank_model($array)
+    {
+        $data = [];
+        foreach ($array as $arr) {
+            $data[$arr] = null;
+        }
+        return $data;
+    }
+}
 
-        return [
-            'submit_text' => ($action == "update") ? "Update" : "Submit",
-            'submit_response' => ($action == "update") ? "Updated." : "Submited.",
-            'submit_response_notyf' => ($action == "update") ?
-                "Data ".$model." Berhasil di Update" : "Data ".$model." Berhasil di Tambahkan"
-        ];
+if (!function_exists('form_model')) {
+    function form_model($model, $dataId=null)
+    {
+        return ($dataId != null) ? $model::find($dataId)->only($model::getForm()) : blank_model($model::getForm());
+    }
+}
+
+if (!function_exists('thousand_format')) {
+    function thousand_format($integer)
+    {
+        return number_format($integer,'0',',','.');
     }
 }
