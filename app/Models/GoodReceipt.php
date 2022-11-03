@@ -54,7 +54,7 @@ class GoodReceipt extends Model
     public static function getRules()
     {
         return [
-            'data.good_receipt_number' => 'required',
+//            'data.good_receipt_number' => 'required',
             'data.sender' => 'required',
             'data.condition' => 'required'
         ];

@@ -10,14 +10,20 @@ class TravelPermitMaterial extends Component
     public $travelPermitId;
     public $travelPermit;
     public $data;
+    public $optionMaterial;
 
     public function mount()
     {
+        $this->optionMaterial=[];
+        foreach (\App\Models\Material::get() as $detail){
+            $this->optionMaterial[] = ['title' => $detail->materialType->title . " " . $detail->name, 'value' => $detail->id];
+        }
         $this->setData();
     }
 
     public function setData()
     {
+
         $this->data = form_model(TravelPermitDetail::class);
         $this->travelPermit = \App\Models\TravelPermit::find($this->travelPermitId);
         $this->data['travel_permit_id']=$this->travelPermitId;

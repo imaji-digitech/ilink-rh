@@ -20,11 +20,11 @@
     </style>
 </head>
 <body>
-<main style="width:100%;padding: 0 0" id="content">
+<main style="width:100%;padding: 0 0">
     <img src="{{ public_path('asset-pdf/template_recycle_hub.jpg') }}" style="width: 100%; position: absolute" alt="">
     <div style="z-index: 2; position: absolute; width: 100%">
         @for($j=0;$j<2;$j++)
-            <div style="height: 130px">
+            <div style="height: 130px;margin: 0;padding:0;">
                 <div style="height: 90px"></div>
                 <div>
                     <table style="width: 100%">
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div style="padding: 0 70px; font-size:14px;height: 417px">
+            <div style="padding: 0 70px; margin: 0; font-size:14px;height: 417px; ">
                 <p style="text-align: justify;text-justify: inter-word;">Pada
                     hari {{ $good->created_at->isoFormat('dddd') }},
                     tanggal {{ $good->created_at->isoFormat('D MMMM Y') }}, telah diterima barang-barang dengan rincian
@@ -59,7 +59,7 @@
                                 <td style="text-align: center">{{ $index+1 }}</td>
                                 <td>{{ $detail->material->name }}</td>
                                 <td style="text-align: center">{{ $detail->quantity.' '.$detail->quantity_type }}</td>
-                                <td>
+                                <td style="text-align: center">
                                     {{ $detail->note }}
                                 </td>
                             </tr>

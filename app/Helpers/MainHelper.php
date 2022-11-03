@@ -91,6 +91,13 @@ if (!function_exists('form_model')) {
 if (!function_exists('thousand_format')) {
     function thousand_format($integer)
     {
-        return number_format($integer,'0',',','.');
+
+        if ((int) $integer == $integer) {
+            return number_format($integer,'0',',','.');
+        }
+        else{
+            return number_format($integer,'2',',','.');
+        }
+
     }
 }

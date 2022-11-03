@@ -28,7 +28,7 @@
                     <td class="whitespace-no-wrap row-action--icon">
                             <a href="{{ route('travel-permit.show',$data->id) }}" class="btn btn-primary m-1">Detail</a>
                             <a href="{{ route('travel-permit.edit',$data->id) }}" class="btn btn-secondary m-1">Ubah</a>
-                            <a href="{{ route('travel-permit.edit',$data->id) }}" class="btn btn-success m-1">Unduh</a>
+                            <a href="{{ route('travel-permit.download',$data->id) }}" class="btn btn-success m-1">Unduh</a>
                     </td>
                 </tr>
             @endforeach

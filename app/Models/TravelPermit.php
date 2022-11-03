@@ -45,9 +45,9 @@ class TravelPermit extends Model
     public static function getRules()
     {
         return [
-            'data.diver_id' => "required",
-            'data.name' => "required|max:255",
-            'data.company' => "required|max:255",
+//            'data.diver_id' => "required",
+            'data.name' => "max:255",
+            'data.company' => "max:255",
             'data.no_phone' => "required|max:255",
             'data.address' => "required",
             'data.vehicle' => "required|max:255",

@@ -17,7 +17,11 @@ class GoodReceiptDetail extends Component
 
     public function mount(){
         $this->setData();
-        $this->optionMaterial= eloquent_to_options(Material::get(),'id','name');
+//        $this->optionMaterial= eloquent_to_options(Material::get(),'id','name');
+        $this->optionMaterial=[];
+        foreach (\App\Models\Material::get() as $detail){
+            $this->optionMaterial[] = ['title' => $detail->materialType->title . " " . $detail->name, 'value' => $detail->id];
+        }
 
     }
     public function setData(){

@@ -50,8 +50,6 @@ class Material extends Model
         return [
             'data.material_type_id' => "required",
             'data.name' => "required|max:255",
-            'data.stock' => "required",
-            'data.note' => "required",
         ];
     }
 

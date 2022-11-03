@@ -21,8 +21,8 @@ class Material extends Component
 
     public function create()
     {
-//        $this->validate();
-//        $this->resetErrorBag();
+        $this->validate();
+        $this->resetErrorBag();
         Model::create($this->data);
         $this->emit('swal:alert', [
             'type' => 'success',

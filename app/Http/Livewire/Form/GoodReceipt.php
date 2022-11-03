@@ -24,6 +24,7 @@ class GoodReceipt extends Component
     {
         $this->validate();
         $this->resetErrorBag();
+        $this->data['good_receipt_number']=Model::getCode($this->data['created_at']);
         Model::create($this->data);
         $this->emit('swal:alert', [
             'type' => 'success',

@@ -27,9 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect(route('dashboard'));
 });
-//Route::get('/admin', function () {
-//    return view('layouts.admin');
-//});
+
 Route::post('/summernote', [SupportController::class, 'upload'])->name('summernote');
 Route::middleware(['auth:sanctum',])->group(function () {
     Route::get('dashboard', function () {
@@ -44,6 +42,9 @@ Route::middleware(['auth:sanctum',])->group(function () {
     Route::resource('invoice', InvoiceController::class)->only('index','create','edit','show');
     Route::resource('receipt', ReceiptController::class)->only('index','create','edit','show');
     Route::resource('good-receipt', GoodReceiptController::class)->only('index','create','edit','show');
+    Route::get('/good-receipt/good-mutation/{id}/status/{status}',function (){
+
+    });
     Route::resource('travel-permit', TravelPermitController::class)->only('index','create','edit','show');
     Route::get('/receipt/download/{id}',function ($id){
         $receipt = Receipt::findOrFail($id);

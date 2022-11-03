@@ -33,13 +33,13 @@ class TravelPermitDetail extends Model
 
     public static function getForm()
     {
-        return ['title', 'quantity','quantity_type', 'note'];
+        return ['material_id', 'quantity','quantity_type', 'note'];
     }
 
     public static function getRules()
     {
         return [
-            'data.title' => "required|max:255",
+            'data.material_id' => "required|max:255",
             'data.quantity' => "required",
             'data.quantity_type' => "required|max:255",
         ];

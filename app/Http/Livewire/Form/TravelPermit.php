@@ -17,11 +17,16 @@ class TravelPermit extends Component
         $this->data=form_model(Model::class,$this->dataId);
         $this->data['user_id']=auth()->id();
     }
+    protected function getRules()
+    {
+        return Model::getRules();
+    }
+
     public function create(){
+//        dd($this->data);
         $this->validate();
         $this->resetErrorBag();
-        $this->data['travel_permit_number']=Model::getCode($this->data=['created_at']);
-        dd($this->data);
+        $this->data['travel_permit_number']=Model::getCode($this->data['created_at']);
         Model::create($this->data);
         $this->emit('swal:alert', [
             'type' => 'success',

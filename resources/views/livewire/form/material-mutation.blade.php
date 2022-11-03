@@ -1,5 +1,5 @@
 <form wire:submit.prevent="{{$action}}">
-    @if($dataId!=null)
+    @if($materialId==null)
     <x-form.select :options="$optionMaterial" :selected="$data['material_id']" title="Nama material" model="data.material_id"/>
     @endif
     <x-form.select :options="$optionStatus" :selected="$data['mutation_status_id']" title="Status mutasi" model="data.mutation_status_id"/>

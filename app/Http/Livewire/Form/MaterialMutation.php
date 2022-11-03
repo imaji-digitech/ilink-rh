@@ -19,7 +19,11 @@ class MaterialMutation extends Component
     public function mount()
     {
 
-        $this->optionMaterial= eloquent_to_options(Material::get(),'id','name');
+//        $this->optionMaterial= eloquent_to_options(Material::get(),'id','name');
+        $this->optionMaterial=[];
+        foreach (Material::get() as $detail){
+            $this->optionMaterial[] = ['title' => $detail->materialType->title . " " . $detail->name, 'value' => $detail->id];
+        }
         $this->optionStatus= eloquent_to_options(MutationStatus::get());
         $this->data = form_model(Model::class, $this->dataId);
         $this->data['user_id']=auth()->id();
