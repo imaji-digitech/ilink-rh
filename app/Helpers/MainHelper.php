@@ -34,6 +34,13 @@ if (!function_exists('month_name')) {
         return $monthName[$month];
     }
 }
+if (!function_exists('day_name')) {
+    function day_name($month)
+    {
+        $monthName = ['', 'Senin','Selasa','Rabu','Kamus','Jumat','Sabtu','Minggu',];
+        return $monthName[$month];
+    }
+}
 
 if (!function_exists('numberToRomanRepresentation')) {
     function numberToRomanRepresentation($number)

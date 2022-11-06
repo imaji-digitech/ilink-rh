@@ -22,6 +22,9 @@ class DashboardData extends Component
     public $productionMutation;
     public $dateList;
 
+    public $dataTable;
+    public $weekNow=1;
+
 
     public function mount()
     {
@@ -127,6 +130,7 @@ GROUP BY day(created_at)
             $this->productionMutation['data'][2][$t->date] = $t->value;
         }
     }
+
 
     public function render()
     {
