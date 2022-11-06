@@ -29,7 +29,7 @@ class GoodReceipt extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'good_receipt_number', 'sender', 'condition', 'created_at', 'updated_at'];
+    protected $fillable = ['user_id', 'good_receipt_number', 'sender', 'condition', 'created_at', 'updated_at','good_receipt_mutation_id'];
 
     public static function getForm()
     {
@@ -82,5 +82,8 @@ class GoodReceipt extends Model
     public function goodReceiptDetails()
     {
         return $this->hasMany('App\Models\GoodReceiptDetail');
+    }
+    public function goodReceiptMutation(){
+        return $this->belongsTo('App\Models\GoodReceiptMutation');
     }
 }

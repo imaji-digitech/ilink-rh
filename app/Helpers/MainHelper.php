@@ -1,5 +1,8 @@
 <?php
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
 if (!function_exists('array_to_object')) {
 
     /**
@@ -87,6 +90,17 @@ if (!function_exists('form_model')) {
         return ($dataId != null) ? $model::find($dataId)->only($model::getForm()) : blank_model($model::getForm());
     }
 }
+if (!function_exists('generateRandomString')){
+    function generateRandomString($length = 10) {
+        $characters = 'abcdefghijklmnopqrstuvwxyz';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+}
 
 if (!function_exists('thousand_format')) {
     function thousand_format($integer)
@@ -101,3 +115,29 @@ if (!function_exists('thousand_format')) {
 
     }
 }
+
+if (!function_exists('get_date_on_month')){
+    function get_date_on_month($value=0,$date = null){
+        if ($date==null){
+            $now = Carbon::now();
+            $start = (new DateTime($now->format('Y-m-d')))->modify('first day of this month');
+            $end = (new DateTime($now->format('Y-m-d')))->modify('first day of next month');
+        }
+        else{
+            $start = (new DateTime($date))->modify('first day of this month');
+            $end = (new DateTime($date))->modify('first day of next month');
+        }
+
+        $interval = DateInterval::createFromDateString('1 day');
+        $period = new DatePeriod($start, $interval, $end);
+        $temp=[];
+        $dateList=[];
+        foreach ($period as $dt) {
+            $temp[intval($dt->format("d"))] = $value;
+            $dateList[] = $dt->format("d");
+        }
+        return [$dateList, $temp];
+    }
+}
+
+

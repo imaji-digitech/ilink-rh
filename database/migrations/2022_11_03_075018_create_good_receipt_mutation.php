@@ -15,10 +15,9 @@ class CreateGoodReceiptMutation extends Migration
     {
 
 
-        Schema::create('good_receipt_mutation', function (Blueprint $table) {
+        Schema::create('good_receipt_mutations', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('indicator')->default(0);
             $table->timestamps();
         });
         Schema::table('good_receipts', function (Blueprint $table) {

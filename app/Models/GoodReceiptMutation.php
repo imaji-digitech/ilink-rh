@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property integer $id
  * @property string $title
- * @property int $indicator
  * @property string $created_at
  * @property string $updated_at
- * @property MaterialMutation[] $materialMutations
+ * @property GoodReceipt[] $goodReceipts
  */
-class MutationStatus extends Model
+class GoodReceiptMutation extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
@@ -24,13 +23,13 @@ class MutationStatus extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'indicator', 'created_at', 'updated_at'];
+    protected $fillable = ['title', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function materialMutations()
+    public function goodReceipts()
     {
-        return $this->hasMany('App\Models\MaterialMutation');
+        return $this->hasMany('App\Models\GoodReceipt');
     }
 }

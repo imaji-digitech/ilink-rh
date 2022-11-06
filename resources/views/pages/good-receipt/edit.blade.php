@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <livewire:form.receipt action="update" :dataId="$id"/>
+                        <livewire:form.good-receipt action="update" :dataId="$id"/>
                     </div>
                 </div>
             </div>

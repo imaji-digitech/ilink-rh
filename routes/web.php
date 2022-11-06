@@ -8,6 +8,7 @@ use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TravelPermitController;
 use App\Models\GoodReceipt;
+use App\Models\Material;
 use App\Models\Receipt;
 use App\Models\TravelPermit;
 use Illuminate\Support\Facades\App;
@@ -42,9 +43,25 @@ Route::middleware(['auth:sanctum',])->group(function () {
     Route::resource('invoice', InvoiceController::class)->only('index','create','edit','show');
     Route::resource('receipt', ReceiptController::class)->only('index','create','edit','show');
     Route::resource('good-receipt', GoodReceiptController::class)->only('index','create','edit','show');
-    Route::get('/good-receipt/good-mutation/{id}/status/{status}',function (){
-
-    });
+    Route::get('/good-receipt/good-mutation/{id}/status/{status}',function ($id,$status){
+        $receipt = GoodReceipt::find($id);
+        $receipt->update(['good_receipt_mutation_id'=>$status]);
+        if ($status==2){
+            foreach ($receipt->goodReceiptDetails as $grd){
+                $material = Material::find($grd->material_id);
+                \App\Models\MaterialMutation::create([
+                    'material_id' => $material->id,
+                    'user_id' => auth()->id(),
+                    'mutation_status_id' => 4,
+                    'amount' => $grd->quantity,
+                    'note' => "barang dari $receipt->good_receipt_number"
+                    ]);
+//                'material_id', 'user_id', 'mutation_status_id', 'report_id', 'amount', 'note',
+                $material->update(['stock'=>$material->stock+$grd->quantity]);
+            }
+        }
+        return redirect()->route('good-receipt.index');
+    })->name('good-receipt.mutation');
     Route::resource('travel-permit', TravelPermitController::class)->only('index','create','edit','show');
     Route::get('/receipt/download/{id}',function ($id){
         $receipt = Receipt::findOrFail($id);

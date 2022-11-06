@@ -17,9 +17,8 @@ class GoodReceiptDetail extends Component
 
     public function mount(){
         $this->setData();
-//        $this->optionMaterial= eloquent_to_options(Material::get(),'id','name');
         $this->optionMaterial=[];
-        foreach (\App\Models\Material::get() as $detail){
+        foreach (Material::get() as $detail){
             $this->optionMaterial[] = ['title' => $detail->materialType->title . " " . $detail->name, 'value' => $detail->id];
         }
 
@@ -29,6 +28,20 @@ class GoodReceiptDetail extends Component
         $this->data['good_receipt_id']=$this->receiptId;
         $this->receipt= GoodReceipt::find($this->receiptId);
     }
+
+    public function delete($id)
+    {
+        Model::find($id)->delete();
+        $this->setData();
+        $this->emit('swal:alert', [
+            'type' => 'success',
+            'title' => 'Data berhasil dihapus',
+            'timeout' => 3000,
+            'icon' => 'success'
+        ]);
+    }
+
+
     public function create(){
         $this->validate();
         $this->resetErrorBag();

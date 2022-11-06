@@ -32,7 +32,7 @@ class GoodReceipt extends Component
             'timeout' => 3000,
             'icon' => 'success'
         ]);
-        $this->emit('redirect', route('receipt.index'));
+        $this->emit('redirect', route('good-receipt.index'));
     }
 
     public function update()
@@ -46,7 +46,7 @@ class GoodReceipt extends Component
             'timeout' => 3000,
             'icon' => 'success'
         ]);
-        $this->emit('redirect', route('receipt.index'));
+        $this->emit('redirect', route('good-receipt.index'));
     }
     protected function getRules()
     {
