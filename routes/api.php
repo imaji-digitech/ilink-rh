@@ -36,6 +36,9 @@ Route::post('cek', function (Request $request) {
 
 Route::post('report', function (Request $request) {
     $decode = json_decode($request->report);
+    if (Report::find($decode->report['id'])!=null){
+        return 'report telah dilaporkan';
+    }
     Report::create($decode->report);
 
 //        MaterialMutation::create((array)$m);

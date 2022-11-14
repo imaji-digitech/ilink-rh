@@ -83,11 +83,7 @@ Route::middleware(['auth:sanctum',])->group(function () {
     })->name('report.create');
 
 
-    Route::get('test', function () {
 
-
-
-    });
 
     Route::get('testing', function () {
 
