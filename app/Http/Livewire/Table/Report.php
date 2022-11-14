@@ -38,6 +38,7 @@ public $error="";
             ];
 
             $encode = json_encode($array);
+            $this->error=$encode;
 //            http://recycle-hub.imajisociopreneur.id/dashboard
             $request = $client->post("http://recycle-hub.imajisociopreneur.id/api/report",
                 array(
@@ -56,7 +57,7 @@ public $error="";
 
             $this->emit('redirect', route('report.index'));
         } catch (Exception $e) {
-            $this->error=$e->getMessage();
+
             $this->emit('swal:alert', [
                 'type' => 'success',
                 'title' => $e->getMessage(),
