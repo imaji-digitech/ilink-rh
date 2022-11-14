@@ -26,9 +26,10 @@
                     <td>{{ $data->receipts->count() }}</td>
                     <td>{{ $data->goodReceipts->count() }}</td>
                     <td>{{ $data->travelPermits->count() }}</td>
+                    {{ $error }}
                     <td>
                         <a href="#" wire:click="report({{ $data->id }})">Report ulang</a>
-{{ $error }}
+
                     </td>
                 </tr>
             @endforeach
