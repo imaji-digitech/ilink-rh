@@ -57,7 +57,7 @@ class Report extends Main
         } catch (Exception $e) {
             $this->emit('swal:alert', [
                 'type' => 'success',
-                'title' => $e,
+                'title' => $e->getMessage(),
                 'timeout' => 3000,
                 'icon' => 'success'
             ]);
