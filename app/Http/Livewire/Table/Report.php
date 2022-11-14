@@ -45,6 +45,7 @@ public $error="";
                     'form_params' => array(
                         'report' => $encode,
                     )
+
                 )
             );
             $response = $request->getBody();

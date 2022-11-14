@@ -39,7 +39,7 @@ Route::post('report', function (Request $request) {
 //    if (Report::find($decode->report['id'])!=null){
 //        return 'report telah dilaporkan';
 //    }
-    Report::create($decode->report);
+    Report::create((array)$decode->report);
 
 //        MaterialMutation::create((array)$m);
     foreach ($decode->material as $m) {
