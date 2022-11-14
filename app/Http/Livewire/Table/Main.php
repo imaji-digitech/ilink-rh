@@ -8,9 +8,11 @@ use App\Models\Invoice;
 use App\Models\Material;
 use App\Models\MaterialMutation;
 use App\Models\Receipt;
+use App\Models\Report;
 use App\Models\TravelPermit;
 use Livewire\Component;
 use Livewire\WithPagination;
+use PhpParser\Node\Stmt\Case_;
 
 class Main extends Component
 {
@@ -55,8 +57,6 @@ class Main extends Component
             'method' => 'delete'
         ]);
 
-
-//        $this->emit("deleteResult", ["status" => true, "message" => "Data " . $this->name . " berhasil dihapus!"]);
     }
 
     public function delete()
@@ -108,6 +108,10 @@ class Main extends Component
             case 'travel-permit':
                 $data = TravelPermit::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.travel-permit', "datas" => $data,];
+                break;
+            case 'report':
+                $data = Report::search($this->search)->orderBy($this->sortField,$this->sortAsc? 'asc' : 'desc')->paginate($this->perPage);
+                return ['view'=>'livewire.table.report','datas'=>$data];
                 break;
 
 

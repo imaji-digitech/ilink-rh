@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGoodReceiptMutation extends Migration
+class UpdateReports extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,11 @@ class CreateGoodReceiptMutation extends Migration
      */
     public function up()
     {
-
-
-        Schema::create('good_receipt_mutations', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->timestamps();
-        });
         Schema::table('good_receipts', function (Blueprint $table) {
-            $table->unsignedBigInteger('good_receipt_mutation_id')->nullable();
-            $table->foreign('good_receipt_mutation_id')
+            $table->unsignedBigInteger('report_id')->nullable();
+            $table->foreign('report_id')
                 ->references('id')
-                ->on('good_receipt_mutations')
+                ->on('reports')
                 ->restrictOnDelete()
                 ->cascadeOnUpdate()
             ;
@@ -38,6 +31,6 @@ class CreateGoodReceiptMutation extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('good_receipt_mutation');
+        //
     }
 }

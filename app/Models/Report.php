@@ -21,7 +21,7 @@ class Report extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -30,6 +30,14 @@ class Report extends Model
      * @var array
      */
     protected $fillable = ['user_id', 'note', 'created_at', 'updated_at'];
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('note', 'like', '%' . $query . '%')
+                ->orWhereHas('user', function ($q) use ($query) {
+                    $q->where('name', 'like', '%' . $query . '%');
+                });
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -69,6 +77,10 @@ class Report extends Model
     public function receipts()
     {
         return $this->hasMany('App\Models\Receipt');
+    }
+    public function goodReceipts()
+    {
+        return $this->hasMany('App\Models\GoodReceipt');
     }
 
     /**

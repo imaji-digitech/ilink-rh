@@ -8,28 +8,36 @@ use Livewire\Component;
 
 class DashboardTable extends Component
 {
-    public $weekNow=1;
+    public $weekNow = 1;
     public $dataTable;
     public $wm;
     public $first;
     public $lastDay;
     public $lastweek;
+    public $date;
+    public $now;
 
-    public function mount(){
+
+    public function mount()
+    {
+
+        if ($this->date == null) {
+            $this->now = Carbon::now();
+        } else {
+            $this->now = Carbon::parse($this->date);
+        }
+        $now = $this->now;
         $this->dataTable();
-        $now= Carbon::now();
-        $this->first=$now->firstOfMonth()->dayOfWeek;
-        $this->lastDay=$now->lastOfMonth()->dayOfWeek;
-        $this->lastweek=$now->lastOfMonth()->weekOfMonth;
+        $this->first = $now->firstOfMonth()->dayOfWeek;
+        $this->lastDay = $now->lastOfMonth()->dayOfWeek;
+        $this->lastweek = $now->lastOfMonth()->weekOfMonth;
 
-    }
-    public function setWeekNow($id){
-        $this->weekNow=$id;
     }
 
     public function dataTable()
     {
-        $now = Carbon::now();
+        $now = $this->now;
+//        dd($this->now);
         $this->dataTable = [];
         $query = "
         SELECT FLOOR((DayOfMonth(material_mutations.created_at)-1)/7)+1 as weeks,
@@ -44,11 +52,17 @@ class DashboardTable extends Component
         ORDER BY weeks, days ";
         $temp = DB::select(DB::raw($query));
         foreach ($temp as $t) {
-            $this->dataTable[$t->weeks][$t->days][$t->status]['value'][]=$t->value;
-            $this->dataTable[$t->weeks][$t->days][$t->status]['name'][]=$t->name;
+            $this->dataTable[$t->weeks][$t->days][$t->status]['value'][] = $t->value;
+            $this->dataTable[$t->weeks][$t->days][$t->status]['name'][] = $t->name;
         }
 //        dd($this->dataTable);
     }
+
+    public function setWeekNow($id)
+    {
+        $this->weekNow = $id;
+    }
+
     public function render()
     {
         return view('livewire.dashboard-table');
