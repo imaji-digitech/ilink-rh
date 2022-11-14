@@ -57,7 +57,7 @@ class Report extends Main
         } catch (Exception $e) {
             $this->emit('swal:alert', [
                 'type' => 'success',
-                'title' => "data tidak berhasil di input",
+                'title' => $e,
                 'timeout' => 3000,
                 'icon' => 'success'
             ]);
