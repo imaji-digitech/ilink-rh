@@ -13,7 +13,7 @@ use GuzzleHttp\Client;
 
 class Report extends Main
 {
-
+public $error="";
     public function report($id)
     {
         $client = new Client();
@@ -56,6 +56,7 @@ class Report extends Main
 
             $this->emit('redirect', route('report.index'));
         } catch (Exception $e) {
+            $this->error=$e->getMessage();
             $this->emit('swal:alert', [
                 'type' => 'success',
                 'title' => $e->getMessage(),

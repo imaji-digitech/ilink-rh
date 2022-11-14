@@ -28,7 +28,7 @@
                     <td>{{ $data->travelPermits->count() }}</td>
                     <td>
                         <a href="#" wire:click="report({{ $data->id }})">Report ulang</a>
-
+{{ $error }}
                     </td>
                 </tr>
             @endforeach
