@@ -79,5 +79,6 @@ Route::post('report', function (Request $request) {
             ReceiptDetail::create((array)$detail);
         }
     }
+    return "data telah diterima";
 
 });

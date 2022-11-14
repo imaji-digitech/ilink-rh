@@ -20,6 +20,19 @@ class Report extends Component
             $good = \App\Models\GoodReceipt::whereReportId(null);
             $receipt = \App\Models\Receipt::whereReportId(null);
             $mutation = \App\Models\MaterialMutation::whereReportId(null);
+
+            $travel->update(['report_id' => $report->id]);
+            $invoice->update(['report_id' => $report->id]);
+            $good->update(['report_id' => $report->id]);
+            $receipt->update(['report_id' => $report->id]);
+            $mutation->update(['report_id' => $report->id]);
+
+            $travel = \App\Models\TravelPermit::whereReportId($report->id);
+            $invoice = \App\Models\Invoice::whereReportId($report->id);
+            $good = \App\Models\GoodReceipt::whereReportId($report->id);
+            $receipt = \App\Models\Receipt::whereReportId($report->id);
+            $mutation = \App\Models\MaterialMutation::whereReportId($report->id);
+
             $array = [
                 'report' => $report->toArray(),
                 'material' => $material->toArray(),
@@ -29,11 +42,7 @@ class Report extends Component
                 'receipt' => $receipt->with('receiptDetails')->get()->toArray(),
                 'mutation' => $mutation->get()->toArray(),
             ];
-            $travel->update(['report_id' => $report->id]);
-            $invoice->update(['report_id' => $report->id]);
-            $good->update(['report_id' => $report->id]);
-            $receipt->update(['report_id' => $report->id]);
-            $mutation->update(['report_id' => $report->id]);
+
             $encode = json_encode($array);
             $request = $client->post("http://recycle-hub.imajisociopreneur.id/api/report",
                 array(
@@ -46,7 +55,7 @@ class Report extends Component
 //            return 'ok';
             $this->emit('swal:alert', [
                 'type' => 'success',
-                'title' => 'Data berhasil ditambahkan',
+                'title' => $response,
                 'timeout' => 3000,
                 'icon' => 'success'
             ]);

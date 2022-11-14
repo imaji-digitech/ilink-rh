@@ -27,7 +27,7 @@
 
 
                         <br>
-                        <a href="{{ route('invoice.create') }}" class="btn btn-primary">Tambah data invoice</a>
+                        <a href="{{ route('report.create') }}" class="btn btn-primary">Tambah data report</a>
                         <livewire:table.main name="report"/>
                     </div>
                 </div>
