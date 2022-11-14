@@ -14,29 +14,18 @@ use http\Client;
 class Report extends Main
 {
 
-    public function report()
+    public function report($id)
     {
         $client = new Client();
         try {
-            $report = \App\Models\Report::create(['user_id' => auth()->id(), 'note' => $this->note,]);
+            $report = \App\Models\Report::find($id);
             $material = Material::get();
-            $travel = TravelPermit::whereReportId(null);
-            $invoice = Invoice::whereReportId(null);
-            $good = GoodReceipt::whereReportId(null);
-            $receipt = Receipt::whereReportId(null);
-            $mutation = MaterialMutation::whereReportId(null);
+            $travel = TravelPermit::whereReportId($id);
+            $invoice = Invoice::whereReportId($id);
+            $good = GoodReceipt::whereReportId($id);
+            $receipt = Receipt::whereReportId($id);
+            $mutation = MaterialMutation::whereReportId($id);
 
-            $travel->update(['report_id' => $report->id]);
-            $invoice->update(['report_id' => $report->id]);
-            $good->update(['report_id' => $report->id]);
-            $receipt->update(['report_id' => $report->id]);
-            $mutation->update(['report_id' => $report->id]);
-
-            $travel = TravelPermit::whereReportId($report->id);
-            $invoice = Invoice::whereReportId($report->id);
-            $good = GoodReceipt::whereReportId($report->id);
-            $receipt = Receipt::whereReportId($report->id);
-            $mutation = MaterialMutation::whereReportId($report->id);
 
             $array = [
                 'report' => $report->toArray(),

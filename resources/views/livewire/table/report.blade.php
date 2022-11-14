@@ -26,6 +26,9 @@
                     <td>{{ $data->receipts->count() }}</td>
                     <td>{{ $data->goodReceipts->count() }}</td>
                     <td>{{ $data->travelPermits->count() }}</td>
+                    <td>
+                        <a href="#" wire:click="report({{ $data->id }})">Report ulang</a>
+                    </td>
                 </tr>
             @endforeach
         </x-slot>
