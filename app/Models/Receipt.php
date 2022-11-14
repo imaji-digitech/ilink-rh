@@ -31,7 +31,7 @@ class Receipt extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id','report_id','receipt_number','ref_number', 'company','name', 'no_phone', 'address', 'note', 'created_at', 'updated_at'];
+    protected $fillable = ['id','user_id','report_id','receipt_number','ref_number', 'company','name', 'no_phone', 'address', 'note', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

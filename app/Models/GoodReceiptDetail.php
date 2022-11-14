@@ -27,7 +27,7 @@ class GoodReceiptDetail extends Model
     /**
      * @var array
      */
-    protected $fillable = ['material_id', 'good_receipt_id', 'quantity','quantity_type','note', 'created_at', 'updated_at'];
+    protected $fillable = ['id','material_id', 'good_receipt_id', 'quantity','quantity_type','note', 'created_at', 'updated_at'];
 
     public static function getForm()
     {

@@ -29,7 +29,7 @@ class TravelPermitDetail extends Model
     /**
      * @var array
      */
-    protected $fillable = ['travel_permit_id','material_id', 'title', 'quantity', 'quantity_type', 'note', 'created_at', 'updated_at'];
+    protected $fillable = ['id','travel_permit_id','material_id', 'title', 'quantity', 'quantity_type', 'note', 'created_at', 'updated_at'];
 
     public static function getForm()
     {

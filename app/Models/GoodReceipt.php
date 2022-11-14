@@ -29,7 +29,7 @@ class GoodReceipt extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'good_receipt_number', 'sender', 'condition', 'created_at', 'updated_at','good_receipt_mutation_id','report_id'];
+    protected $fillable = ['id','user_id', 'good_receipt_number', 'sender', 'condition', 'created_at', 'updated_at','good_receipt_mutation_id','report_id'];
 
     public static function getForm()
     {

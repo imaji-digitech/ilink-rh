@@ -35,7 +35,7 @@ class TravelPermit extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'report_id', 'travel_permit_number', 'name', 'company', 'no_phone', 'address', 'vehicle', 'vehicle_number', 'created_at', 'updated_at'];
+    protected $fillable = ['id','user_id', 'report_id', 'travel_permit_number', 'name', 'company', 'no_phone', 'address', 'vehicle', 'vehicle_number', 'created_at', 'updated_at'];
 
     public static function getForm()
     {

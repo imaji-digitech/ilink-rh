@@ -15,7 +15,7 @@ class GoodReceiptMutation extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -23,7 +23,7 @@ class GoodReceiptMutation extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'created_at', 'updated_at'];
+    protected $fillable = ['id','title', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -28,7 +28,7 @@ class InvoiceDetail extends Model
     /**
      * @var array
      */
-    protected $fillable = ['invoice_id', 'title', 'price', 'quantity', 'quantity_type', 'note', 'created_at', 'updated_at'];
+    protected $fillable = ['id','invoice_id', 'title', 'price', 'quantity', 'quantity_type', 'note', 'created_at', 'updated_at'];
 
 
     public static function getForm()

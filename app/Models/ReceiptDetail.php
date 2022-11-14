@@ -28,7 +28,7 @@ class ReceiptDetail extends Model
     /**
      * @var array
      */
-    protected $fillable = ['receipt_id', 'title', 'price', 'quantity', 'quantity_type', 'note', 'created_at', 'updated_at'];
+    protected $fillable = ['id','receipt_id', 'title', 'price', 'quantity', 'quantity_type', 'note', 'created_at', 'updated_at'];
 
     public static function getForm()
     {

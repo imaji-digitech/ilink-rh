@@ -33,7 +33,7 @@ class Invoice extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'invoice_status_id','report_id', 'invoice_number', 'account_number', 'company', 'note', 'created_at', 'updated_at'];
+    protected $fillable = ['id','user_id', 'invoice_status_id','report_id', 'invoice_number', 'account_number', 'company', 'note', 'created_at', 'updated_at'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
