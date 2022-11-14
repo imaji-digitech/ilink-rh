@@ -42,7 +42,7 @@ public $error="";
             $request = $client->post("http://recycle-hub.imajisociopreneur.id/api/report",
                 array(
                     'form_params' => array(
-                        'log' => $encode,
+                        'report' => $encode,
                     )
                 )
             );
