@@ -50,7 +50,7 @@
                     {{--                        </a>--}}
                     {{--                    </li>--}}
 
-                    @if(config('app.name', 'Laravel')=='Laravel')
+
                         <li class="sidebar-main-title">
                             <div><h6>Pengolahan</h6></div>
                         </li>
@@ -89,7 +89,7 @@
                                 <i class="fas fa-box"></i><span> Terima barang</span>
                             </a>
                         </li>
-                    @endif
+{{--                    @endif--}}
 
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title link-nav">

@@ -11,6 +11,7 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body">
+                        @if(config('app.name', 'Laravel')=='Laravel')
                         <h5>Note : {{ $last?$last->created_at:'belum pernah melaporkan'}}</h5>
                         <h5>Hal yang belum dilaporkan</h5>
                         <div class="row">
@@ -26,8 +27,11 @@
                         </div>
 
 
+
                         <br>
+
                         <a href="{{ route('report.create') }}" class="btn btn-primary">Tambah data report</a>
+                        @endif
                         <livewire:table.report name="report"/>
                     </div>
                 </div>

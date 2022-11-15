@@ -14,6 +14,7 @@
                 <th style="width: 10px">Kwitansi</th>
                 <th style="width: 10px">Barang masuk</th>
                 <th style="width: 10px">Surat Jalan</th>
+                <th style="width: 30px">Aksi</th>
             </tr>
         </x-slot>
         <x-slot name="body">
@@ -26,10 +27,13 @@
                     <td>{{ $data->receipts->count() }}</td>
                     <td>{{ $data->goodReceipts->count() }}</td>
                     <td>{{ $data->travelPermits->count() }}</td>
-                    {{ $error }}
                     <td>
-                        <a href="#" wire:click="report({{ $data->id }})">Report ulang</a>
-
+                        <div class="row">
+                            @if(config('app.name', 'Laravel')=='Laravel')
+                            <a href="#" wire:click="report({{ $data->id }})" class="btn-primary btn mb-1">Report  <i class="fa fa-retweet"></i> </a>
+                            @endif
+                            <a href="{{ route('report.show',$data->id) }}" class="btn-secondary btn">Detail</a>
+                        </div>
                     </td>
                 </tr>
             @endforeach
