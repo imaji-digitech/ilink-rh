@@ -29,7 +29,7 @@ class Report extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id','user_id', 'note', 'created_at', 'updated_at'];
+    protected $fillable = ['id','user_id', 'note','data', 'created_at', 'updated_at'];
     public static function search($query)
     {
         return empty($query) ? static::query()

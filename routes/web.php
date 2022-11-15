@@ -5,6 +5,7 @@ use App\Http\Controllers\GoodReceiptController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TravelPermitController;
 use App\Models\GoodReceipt;
@@ -81,7 +82,7 @@ Route::middleware(['auth:sanctum',])->group(function () {
     Route::get('report/create', function () {
         return view('pages.report.create');
     })->name('report.create');
-
+    Route::resource('report', ReportController::class)->only('show');
 
 
 
