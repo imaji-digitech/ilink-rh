@@ -28,15 +28,18 @@
                     <td>{{ $data->address }}</td>
                     <td>{{ $data->created_at->format('d-m-Y') }}</td>
                     <td class="whitespace-no-wrap row-action--icon">
+                        @if(config('app.name', 'Laravel')=='Laravel')
                         <a href="{{ route('receipt.show',$data->id) }}" class="btn btn-primary m-1">
                             Detail
                         </a>
                         <a href="{{ route('receipt.edit',$data->id) }}" class="btn btn-secondary m-1">
                             Ubah
                         </a>
+                        @endif
                         <a href="{{ route('receipt.download',$data->id) }}" target="_blank" class="btn btn-success m-1">
                             Unduh
                         </a>
+
                     </td>
                 </tr>
             @endforeach
