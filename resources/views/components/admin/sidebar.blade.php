@@ -35,23 +35,11 @@
                         </a>
                     </li>
                     @if(auth()->id()!=6)
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('report.index') }}">
-                            <i class="fas fa-home"></i><span> Report bulanan</span>
-                        </a>
-                    </li>
-                    {{--                    <li class="sidebar-list">--}}
-                    {{--                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('driver.index') }}">--}}
-                    {{--                            <i class="fas fa-car"></i><span> Driver</span>--}}
-                    {{--                        </a>--}}
-                    {{--                    </li>--}}
-                    {{--                    <li class="sidebar-list">--}}
-                    {{--                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('driver.index') }}">--}}
-                    {{--                            <i class="fas fa-user"></i><span> User</span>--}}
-                    {{--                        </a>--}}
-                    {{--                    </li>--}}
-
-
+                        <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('report.index') }}">
+                                <i class="fas fa-home"></i><span> Report bulanan</span>
+                            </a>
+                        </li>
                         <li class="sidebar-main-title">
                             <div><h6>Pengolahan</h6></div>
                         </li>
