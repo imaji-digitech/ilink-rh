@@ -1,8 +1,12 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
+<x-admin>
+
+    <x-slot name="title">
+        {{--        <h2 class="font-semibold text-xl text-gray-800 leading-tight">--}}
+        {{ __('Profile') }}
+        {{--        </h2>--}}
+    </x-slot>
+    <x-slot name="css">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </x-slot>
 
     <div>
@@ -33,13 +37,13 @@
                 @livewire('profile.logout-other-browser-sessions-form')
             </div>
 
-            @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-                <x-jet-section-border />
+            {{--            @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())--}}
+            {{--                <x-jet-section-border />--}}
 
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.delete-user-form')
-                </div>
-            @endif
+            {{--                <div class="mt-10 sm:mt-0">--}}
+            {{--                    @livewire('profile.delete-user-form')--}}
+            {{--                </div>--}}
+            {{--            @endif--}}
         </div>
     </div>
-</x-app-layout>
+</x-admin>
