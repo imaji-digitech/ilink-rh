@@ -23,8 +23,8 @@
                             <tbody>
                             @foreach($data->mutation as $mutation)
                                 <tr>
-                                    <td>{{ \App\Models\Material::find($mutation->material_id) }}</td>
-                                    <td>{{ \App\Models\MutationStatus::find($mutation->mutation_status_id) }}</td>
+                                    <td>{{ \App\Models\Material::find($mutation->material_id)->name }}</td>
+                                    <td>{{ \App\Models\MutationStatus::find($mutation->mutation_status_id)->title }}</td>
                                     <td>{{ $mutation->amount }}</td>
                                     <td>{{ $mutation->note }}</td>
                                 </tr>
