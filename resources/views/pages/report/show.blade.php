@@ -25,8 +25,8 @@
                                 <tr>
                                     <td>{{ \App\Models\Material::find($mutation->material_id) }}</td>
                                     <td>{{ \App\Models\MutationStatus::find($mutation->mutation_status_id) }}</td>
-                                    <td>{{ $amount }}</td>
-                                    <td>{{ $note }}</td>
+                                    <td>{{ $mutation->amount }}</td>
+                                    <td>{{ $mutation->note }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
