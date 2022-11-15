@@ -34,7 +34,7 @@
                             <i class="fas fa-home"></i><span> Dashboard</span>
                         </a>
                     </li>
-                    @if(auth()->id()==6)
+                    @if(auth()->id()!=6)
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title link-nav" href="{{ route('report.index') }}">
                             <i class="fas fa-home"></i><span> Report bulanan</span>
