@@ -41,6 +41,8 @@ Route::post('report', function (Request $request) {
     }
     $report = (array)$decode->report;
     $report['data']=$request->report;
+    $report['created_at']=\Carbon\Carbon::parse($report['created_at'])->addHours(7);
+    $report['updated_at']=\Carbon\Carbon::parse($report['updated_at'])->addHours(7);
     Report::create($report);
 
 //        MaterialMutation::create((array)$m);
@@ -54,34 +56,61 @@ Route::post('report', function (Request $request) {
     }
 
     foreach ($decode->mutation as $m) {
-        MaterialMutation::create((array)$m);
+        $a=(array)$m;
+        $a['created_at']=\Carbon\Carbon::parse($a['created_at'])->addHours(7);
+        $a['updated_at']=\Carbon\Carbon::parse($a['updated_at'])->addHours(7);
+        MaterialMutation::create($a);
     }
 
     foreach ($decode->good as $m) {
-        GoodReceipt::create((array)$m);
+        $a=(array)$m;
+        $a['created_at']=\Carbon\Carbon::parse($a['created_at'])->addHours(7);
+        $a['updated_at']=\Carbon\Carbon::parse($a['updated_at'])->addHours(7);
+        GoodReceipt::create($a);
         foreach ($m->good_receipt_details as $detail) {
-            GoodReceiptDetail::create((array)$detail);
+            $b=(array)$detail;
+            $b['created_at']=\Carbon\Carbon::parse($b['created_at'])->addHours(7);
+            $b['updated_at']=\Carbon\Carbon::parse($b['updated_at'])->addHours(7);
+            GoodReceiptDetail::create($b);
         }
     }
 
     foreach ($decode->{'travel-permit'} as $m) {
-        TravelPermit::create((array)$m);
+        $a=(array)$m;
+        $a['created_at']=\Carbon\Carbon::parse($a['created_at'])->addHours(7);
+        $a['updated_at']=\Carbon\Carbon::parse($a['updated_at'])->addHours(7);
+        TravelPermit::create($a);
         foreach ($m->travel_permit_details as $detail) {
-            TravelPermitDetail::create((array)$detail);
+            $b=(array)$detail;
+            $b['created_at']=\Carbon\Carbon::parse($b['created_at'])->addHours(7);
+            $b['updated_at']=\Carbon\Carbon::parse($b['updated_at'])->addHours(7);
+            TravelPermitDetail::create($b);
         }
     }
 
     foreach ($decode->invoice as $m) {
-        Invoice::create((array)$m);
+        $a=(array)$m;
+        $a['created_at']=\Carbon\Carbon::parse($a['created_at'])->addHours(7);
+        $a['updated_at']=\Carbon\Carbon::parse($a['updated_at'])->addHours(7);
+        Invoice::create($a);
         foreach ($m->invoice_details as $detail) {
-            InvoiceDetail::create((array)$detail);
+            $b=(array)$detail;
+            $b['created_at']=\Carbon\Carbon::parse($b['created_at'])->addHours(7);
+            $b['updated_at']=\Carbon\Carbon::parse($b['updated_at'])->addHours(7);
+            InvoiceDetail::create($b);
         }
     }
 
     foreach ($decode->receipt as $m) {
-        Receipt::create((array)$m);
+        $a=(array)$m;
+        $a['created_at']=\Carbon\Carbon::parse($a['created_at'])->addHours(7);
+        $a['updated_at']=\Carbon\Carbon::parse($a['updated_at'])->addHours(7);
+        Receipt::create($a);
         foreach ($m->receipt_details as $detail) {
-            ReceiptDetail::create((array)$detail);
+            $b=(array)$detail;
+            $b['created_at']=\Carbon\Carbon::parse($b['created_at'])->addHours(7);
+            $b['updated_at']=\Carbon\Carbon::parse($b['updated_at'])->addHours(7);
+            ReceiptDetail::create($b);
         }
     }
     return "data telah diterima";
