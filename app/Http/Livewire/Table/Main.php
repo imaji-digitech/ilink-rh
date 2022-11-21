@@ -25,7 +25,7 @@ class Main extends Component
     public $data;
 
     public $perPage = 10;
-    public $sortField = "id";
+    public $sortField = "created_at";
     public $sortAsc = false;
     public $search = '';
     protected $paginationTheme = 'bootstrap';

@@ -75,21 +75,8 @@ Route::middleware(['auth:sanctum',])->group(function () {
         return view('pages.report.index');
     })->name('report.index');
 
-    Route::get('report', function () {
-        return view('pages.report.index');
-    })->name('report.index');
-
     Route::get('report/create', function () {
         return view('pages.report.create');
     })->name('report.create');
     Route::resource('report', ReportController::class)->only('show');
-
-
-
-    Route::get('testing', function () {
-
-
-    });
-
-
 });
