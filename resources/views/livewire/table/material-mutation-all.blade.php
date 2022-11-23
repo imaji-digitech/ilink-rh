@@ -2,7 +2,7 @@
     <x-data-table :model="$datas">
         <x-slot name="head">
             <tr>
-{{--                'material_id', 'user_id', 'mutation_status_id', 'report_id', 'amount', 'note',--}}
+                {{--                'material_id', 'user_id', 'mutation_status_id', 'report_id', 'amount', 'note',--}}
                 <th><a wire:click.prevent="sortBy('id')" role="button" href="#">
                         # @include('components.sort-icon', ['field' => 'id'])
                     </a></th>
@@ -18,6 +18,7 @@
                 <th>Jumlah</th>
                 <th>Catatan</th>
                 <th>Dilaporkan pada</th>
+                <th>Aksi</th>
             </tr>
         </x-slot>
         <x-slot name="body">
@@ -30,7 +31,11 @@
                     <td>{{ thousand_format($data->amount) }}</td>
                     <td>{{ $data->note }}</td>
                     <td>{{ $data->created_at!=$data->updated_at?$data->updated_at:'' }}</td>
-
+                    <td>
+                        {{--    @if($data->report_id==null)--}}
+                        <a href="{{ route('material-mutation.edit',$data->id) }}" class="btn btn-primary">Ubah</a>
+                        {{--    @endif--}}
+                    </td>
                 </tr>
             @endforeach
         </x-slot>

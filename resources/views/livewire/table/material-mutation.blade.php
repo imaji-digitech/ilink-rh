@@ -15,6 +15,7 @@
                 <th>Jumlah</th>
                 <th>Catatan</th>
                 <th>Dilaporkan pada</th>
+                <th>Aksi</th>
             </tr>
         </x-slot>
         <x-slot name="body">
@@ -26,7 +27,11 @@
                     <td>{{ thousand_format($data->amount) }}</td>
                     <td>{{ $data->note }}</td>
                     <td>{{ $data->created_at!=$data->updated_at?$data->updated_at:'' }}</td>
-
+                    <td>
+{{--                        @if($data->report_id==null)--}}
+                            <a href="{{ route('material-mutation.edit',$data->id) }}" class="btn btn-primary">Ubah</a>
+{{--                        @endif--}}
+                    </td>
                 </tr>
             @endforeach
         </x-slot>

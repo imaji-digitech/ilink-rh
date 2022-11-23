@@ -8,14 +8,7 @@ use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TravelPermitController;
-use App\Models\GoodReceipt;
-use App\Models\Invoice;
-use App\Models\Material;
-use App\Models\MaterialMutation;
 use App\Models\Receipt;
-use App\Models\Report;
-use App\Models\TravelPermit;
-use GuzzleHttp\Client;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -33,9 +26,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect(route('dashboard'));
 });
-Route::get('test/{a}', function ($a) {
-    dd($a);
-});
 
 Route::post('/summernote', [SupportController::class, 'upload'])->name('summernote');
 Route::middleware(['auth:sanctum',])->group(function () {
@@ -48,6 +38,7 @@ Route::middleware(['auth:sanctum',])->group(function () {
     Route::get('/material/mutation/{id}', [MaterialController::class, 'mutationMaterial'])->name('material.mutation.create');
     Route::get('/material-mutation/', [MaterialController::class, 'mutation'])->name('material-mutation');
     Route::get('/material-mutation/create', [MaterialController::class, 'mutationCreate'])->name('material-mutation.create');
+    Route::get('/material-mutation/edit/{id}', [MaterialController::class, 'mutationEdit'])->name('material-mutation.edit');
 
     Route::resource('invoice', InvoiceController::class)->only('index', 'create', 'edit', 'show');
     Route::resource('receipt', ReceiptController::class)->only('index', 'create', 'edit', 'show');
@@ -67,16 +58,9 @@ Route::middleware(['auth:sanctum',])->group(function () {
     })->name('receipt.download');
 
 
-    Route::get('/report/monthly/{month}/{year}', function ($month, $year) {
-        return view('pages.report.monthly-report', compact('month', 'year'));
-    })->name('report.monthly');
+    Route::get('/report/monthly/{month}/{year}', [ReportController::class,'monthly'])->name('report.monthly');
+    Route::resource('report', ReportController::class)->only('index','create','show','edit');
 
-    Route::get('report', function () {
-        return view('pages.report.index');
-    })->name('report.index');
-
-    Route::get('report/create', function () {
-        return view('pages.report.create');
-    })->name('report.create');
-    Route::resource('report', ReportController::class)->only('show');
+//    Route::get('report', [ReportController::class,'index'])->name('report.index');
+//    Route::get('report/create', [ReportController::class,'create'])->name('report.create');
 });

@@ -29,7 +29,7 @@ class Main extends Component
     public $sortAsc = false;
     public $search = '';
     protected $paginationTheme = 'bootstrap';
-    protected $listeners = ["deleteItem" => "delete_item", 'delete' => 'delete'];
+    protected $listeners = ["deleteItem" => "deleteItem", 'delete' => 'delete'];
 
     public function sortBy($field)
     {
@@ -44,6 +44,7 @@ class Main extends Component
 
     public function deleteItem($id)
     {
+//        dd("asdad");
         $this->data = $this->model::find($id);
 
         if (!$this->data) {
@@ -78,43 +79,50 @@ class Main extends Component
     {
         switch ($this->name) {
             case 'driver':
+                $this->model=Driver::class;
                 $data = Driver::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.driver', "datas" => $data,];
                 break;
             case 'good-receipt':
+                $this->model=GoodReceipt::class;
                 $data = GoodReceipt::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.good-receipt', "datas" => $data,];
                 break;
             case 'material':
+                $this->model=Material::class;
                 $data = Material::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.material', "datas" => $data,];
                 break;
             case 'material-mutation':
+                $this->model=MaterialMutation::class;
                 $data = MaterialMutation::whereMaterialId($this->dataId)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.material-mutation', "datas" => $data,];
                 break;
             case 'material-mutation-all':
+                $this->model=MaterialMutation::class;
                 $data = MaterialMutation::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.material-mutation-all', "datas" => $data,];
                 break;
             case 'invoice':
+                $this->model=Invoice::class;
                 $data = Invoice::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.invoice', "datas" => $data,];
                 break;
             case 'receipt':
+                $this->model=Receipt::class;
                 $data = Receipt::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.receipt', "datas" => $data,];
                 break;
             case 'travel-permit':
+                $this->model=TravelPermit::class;
                 $data = TravelPermit::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.travel-permit', "datas" => $data,];
                 break;
             case 'report':
+                $this->model=Report::class;
                 $data = Report::search($this->search)->orderBy($this->sortField,$this->sortAsc? 'asc' : 'desc')->paginate($this->perPage);
                 return ['view'=>'livewire.table.report','datas'=>$data];
                 break;
-
-
             default:
                 # code...
                 break;

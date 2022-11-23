@@ -26,9 +26,10 @@
                     <td class="whitespace-no-wrap row-action--icon">
                         <a href="{{ route('material.show',$data->id) }}" class="btn btn-secondary">Riwayat mutasi</a>
                         @if(config('app.name', 'Laravel')=='Laravel')
-                        <a href="{{ route('material.mutation.create',$data->id) }}" class="btn btn-primary">Mutasi</a>
-                        <a href="{{ route('material.edit',$data->id) }}" class="btn btn-danger">Ubah</a>
-                            @endif
+                            <a href="{{ route('material.mutation.create',$data->id) }}"
+                               class="btn btn-primary">Mutasi</a>
+                            <a href="{{ route('material.edit',$data->id) }}" class="btn btn-danger">Ubah</a>
+                        @endif
                     </td>
                 </tr>
             @endforeach

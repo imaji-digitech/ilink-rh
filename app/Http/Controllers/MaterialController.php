@@ -23,6 +23,11 @@ class MaterialController extends Controller
     public function mutationCreate(){
         return view('pages.material.mutation');
     }
+
+    public function mutationEdit($id){
+        return view('pages.material.mutation-edit',compact('id'));
+    }
+
     public function mutation(){
         return view('pages.material-mutation.index');
     }
