@@ -59,7 +59,12 @@ Route::post('report', function (Request $request) {
         $a=(array)$m;
         $a['created_at']=\Carbon\Carbon::parse($a['created_at'])->addHours(7);
         $a['updated_at']=\Carbon\Carbon::parse($a['updated_at'])->addHours(7);
-        MaterialMutation::create($a);
+        $updatedCheck=MaterialMutation::find($a['id']);
+        if($updatedCheck!=null){
+            $updatedCheck->update($a);
+        }else{
+            MaterialMutation::create($a);
+        }
     }
 
     foreach ($decode->good as $m) {
