@@ -23,7 +23,7 @@
                         </thead>
                         <tbody>
 {{--                        @isset($data->mutation)--}}
-                        @foreach($data['mutation'] as $mutation)
+                        @foreach($report->materialMutations as $mutation)
                             <tr>
                                 <td>{{ Material::find($mutation->material_id)->name }}</td>
                                 <td>{{ MutationStatus::find($mutation->mutation_status_id)->title }}</td>
