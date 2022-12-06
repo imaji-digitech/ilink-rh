@@ -22,8 +22,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @isset($data->mutation)
-                        @foreach($data->mutation as $mutation)
+{{--                        @isset($data->mutation)--}}
+                        @foreach($data['mutation'] as $mutation)
                             <tr>
                                 <td>{{ Material::find($mutation->material_id)->name }}</td>
                                 <td>{{ MutationStatus::find($mutation->mutation_status_id)->title }}</td>
@@ -31,7 +31,7 @@
                                 <td>{{ $mutation->note }}</td>
                             </tr>
                         @endforeach
-                        @endisset
+{{--                        @endisset--}}
                         </tbody>
                     </table>
 
