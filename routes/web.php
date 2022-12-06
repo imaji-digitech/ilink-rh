@@ -61,6 +61,4 @@ Route::middleware(['auth:sanctum',])->group(function () {
     Route::get('/report/monthly/{month}/{year}', [ReportController::class,'monthly'])->name('report.monthly');
     Route::resource('report', ReportController::class)->only('index','create','show','edit');
 
-//    Route::get('report', [ReportController::class,'index'])->name('report.index');
-//    Route::get('report/create', [ReportController::class,'create'])->name('report.create');
 });
