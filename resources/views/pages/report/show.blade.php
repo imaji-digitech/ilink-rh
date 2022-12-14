@@ -22,7 +22,6 @@
                         </tr>
                         </thead>
                         <tbody>
-{{--                        @isset($data->mutation)--}}
                         @foreach($report->materialMutations as $mutation)
                             <tr>
                                 <td>{{ Material::find($mutation->material_id)->name }}</td>
@@ -31,7 +30,6 @@
                                 <td>{{ $mutation->note }}</td>
                             </tr>
                         @endforeach
-{{--                        @endisset--}}
                         </tbody>
                     </table>
 
@@ -45,7 +43,7 @@
 
                 </div>
 
+            </div>
         </div>
-    </div>
 
 </x-admin>

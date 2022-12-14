@@ -53,8 +53,8 @@
 
             <div style="padding: 0 70px; font-size:14px;height: 417px">
                 <p style="text-align: justify;text-justify: inter-word;">Pada
-                    hari {{ $permit->created_at->isoFormat('dddd') }},
-                    tanggal {{ $permit->created_at->isoFormat('D MMMM Y') }}, kami kirimkan barang-barang dengan rincian
+                    hari {{ \Carbon\Carbon::parse($permit->created_at)->isoFormat('dddd') }},
+                    tanggal {{ \Carbon\Carbon::parse($permit->created_at)->isoFormat('D MMMM Y') }}, kami kirimkan barang-barang dengan rincian
                     sebagai berikut melalui kendaraan dengan No. Pol. {{ $permit->vehicle_number }}</p>
                 <div style="min-height: 135px;">
                     <table class="table" style="width: 100%; font-size: 12px">
