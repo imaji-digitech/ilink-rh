@@ -42,7 +42,7 @@
             <div style="padding: 0 70px; margin: 0; font-size:14px;height: 417px; ">
                 <p style="text-align: justify;text-justify: inter-word;">Pada
                     hari {{ $good->created_at->isoFormat('dddd') }},
-                    tanggal {{ $good->created_at->isoFormat('D MMMM Y') }}, telah diterima barang-barang dengan rincian
+                    tanggal {{ $good->created_at->isoFormat('D MMMM Y') }}, telah diterima barang-barang dari ........................ dengan rincian
                     sebagai
                     berikut:</p>
 
