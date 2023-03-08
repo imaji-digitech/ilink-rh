@@ -33,7 +33,7 @@ class Invoice extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id','user_id', 'invoice_status_id','report_id', 'invoice_number', 'account_number', 'company', 'note', 'created_at', 'updated_at'];
+    protected $fillable = ['id','user_id', 'invoice_status_id','report_id', 'invoice_number', 'account_number', 'company','address', 'note', 'created_at', 'updated_at'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -44,7 +44,7 @@ class Invoice extends Model
 
     public static function getForm()
     {
-        return ['user_id', 'invoice_status_id', 'invoice_number', 'account_number', 'company', 'note',];
+        return ['user_id', 'invoice_status_id', 'invoice_number', 'account_number', 'company','address', 'note',];
     }
 
     public static function search($query)

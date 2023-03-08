@@ -25,6 +25,7 @@
                     <td>{{ $data->company }}</td>
                     <td class="whitespace-no-wrap row-action--icon">
                         <a href="{{ route('invoice.show',$data->id) }}" class="btn btn-primary">detail</a>
+                        <a href="{{ route('invoice.download',$data->id) }}" class="btn btn-primary">Download</a>
                     </td>
                 </tr>
             @endforeach

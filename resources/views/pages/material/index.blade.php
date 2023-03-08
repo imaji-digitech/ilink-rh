@@ -7,9 +7,9 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    @if(config('app.name', 'Laravel')=='Laravel')
+{{--                    @if(config('app.name', 'Laravel')=='Laravel')--}}
                     <a href="{{ route('material.create') }}" class="btn btn-primary">Tambah data material</a>
-                    @endif
+{{--                    @endif--}}
                     <livewire:table.main name="material"/>
                 </div>
             </div>

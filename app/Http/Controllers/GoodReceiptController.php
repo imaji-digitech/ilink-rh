@@ -45,6 +45,6 @@ class GoodReceiptController extends Controller
         $pdf = App::make('dompdf.wrapper');
         setlocale(LC_ALL, 'IND');
         $pdf->loadView('pdf.good-receipt',compact('good'))->setPaper('a4');
-        return $pdf->stream('tanda-terima-barang-'.$good->receipt_number.'-'.$good->created_at->format('d-m-Y').'.pdf');
+        return $pdf->stream('tanda-terima-barang-'.$good->good_receipt_number.'-'.$good->created_at->format('d-m-Y').'.pdf');
     }
 }

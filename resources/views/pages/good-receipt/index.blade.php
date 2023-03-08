@@ -7,9 +7,9 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    @if(config('app.name', 'Laravel')=='Laravel')
+{{--                    @if(config('app.name', 'Laravel')=='Laravel')--}}
                     <a href="{{ route('good-receipt.create') }}" class="btn btn-primary">Tambah data tanda terima barang</a>
-                    @endif
+{{--                    @endif--}}
                     <livewire:table.main name="good-receipt"/>
                 </div>
             </div>

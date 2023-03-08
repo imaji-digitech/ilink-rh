@@ -41,6 +41,8 @@ Route::middleware(['auth:sanctum',])->group(function () {
     Route::get('/material-mutation/edit/{id}', [MaterialController::class, 'mutationEdit'])->name('material-mutation.edit');
 
     Route::resource('invoice', InvoiceController::class)->only('index', 'create', 'edit', 'show');
+    Route::get('/invoice/download/{id}', [InvoiceController::class, 'download'])->name('invoice.download');
+
     Route::resource('receipt', ReceiptController::class)->only('index', 'create', 'edit', 'show');
 
     Route::resource('good-receipt', GoodReceiptController::class)->only('index', 'create', 'edit', 'show');
