@@ -26,12 +26,12 @@
                     <td>{{ $data->name." ($data->no_phone)" }} <br> <b>{{ $data->company }}</b></td>
                     <td>{{ $data->address }}</td>
                     <td class="whitespace-no-wrap row-action--icon">
-                        @if(config('app.name', 'Laravel')=='Laravel')
+{{--                        @if(config('app.name', 'Laravel')=='Laravel')--}}
                             <a href="{{ route('travel-permit.show',$data->id) }}" class="btn btn-primary m-1">Detail</a>
                             <a href="{{ route('travel-permit.edit',$data->id) }}" class="btn btn-secondary m-1">Ubah</a>
                             <a href="#" wire:click="deleteItem({{ $data->id }})"
                                class="btn btn-danger m-1 col">Hapus</a>
-                        @endif
+{{--                        @endif--}}
                         <a href="{{ route('travel-permit.download',$data->id) }}" class="btn btn-success m-1">Unduh</a>
 
                     </td>

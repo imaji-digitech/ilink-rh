@@ -28,7 +28,7 @@
                     <td>{{ $data->address }}</td>
                     <td>{{ $data->created_at->format('d-m-Y') }}</td>
                     <td class="whitespace-no-wrap row-action--icon">
-                        @if(config('app.name', 'Laravel')=='Laravel')
+{{--                        @if(config('app.name', 'Laravel')=='Laravel')--}}
                             <a href="{{ route('receipt.show',$data->id) }}" class="btn btn-primary m-1">
                                 Detail
                             </a>
@@ -41,7 +41,7 @@
                                 </a>
                             @endif
 
-                        @endif
+{{--                        @endif--}}
                         <a href="{{ route('receipt.download',$data->id) }}" target="_blank" class="btn btn-success m-1">
                             Unduh
                         </a>
