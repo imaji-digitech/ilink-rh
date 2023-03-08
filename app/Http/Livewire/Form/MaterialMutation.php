@@ -56,6 +56,7 @@ class MaterialMutation extends Component
         $this->validate();
         $this->resetErrorBag();
         $this->data['created_at'] = $this->date . ' ' . Carbon::now()->format('H:i');
+        $this->data['updated_at'] = $this->date . ' ' . Carbon::now()->format('H:i');
 
         $datas = Model::find($this->dataId);
         $material = Material::find($datas->material_id);
