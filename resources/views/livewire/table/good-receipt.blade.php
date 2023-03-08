@@ -37,7 +37,7 @@
                                class="btn btn-success m-1 col" target="_blank">
                                 Unduh
                             </a>
-                            @if(config('app.name', 'Laravel')=='Laravel')
+{{--                            @if(config('app.name', 'Laravel')=='Laravel')--}}
                                 @if($data->good_receipt_mutation_id==null)
                                     <a href="{{ route('good-receipt.mutation',[$data->id,1]) }}"
                                        class="btn btn-danger m-1 col">Selesai</a>
@@ -46,7 +46,7 @@
                                     <a href="#" wire:click="deleteItem({{ $data->id }})"
                                        class="btn btn-danger m-1 col">Hapus</a>
                                 @endif
-                            @endif
+{{--                            @endif--}}
                         </div>
 
                     </td>
