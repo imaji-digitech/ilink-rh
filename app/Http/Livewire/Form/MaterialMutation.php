@@ -36,9 +36,9 @@ class MaterialMutation extends Component
     {
         $this->validate();
         $this->resetErrorBag();
+        $this->data['created_at'] = $this->date . ' ' . Carbon::now()->format('H:i');
         Model::create($this->data);
 //        $this->presence['created_at'] = $this->presenceTime['date'] . ' ' . $this->presenceTime['time'];
-        $this->data['created_at'] = $this->date . ' ' . Carbon::now()->format('H:i');
         $material = Material::find($this->data['material_id']);
         $mutation = MutationStatus::find($this->data['mutation_status_id']);
         $material->update(['stock' => $material->stock + ($mutation->indicator * $this->data['amount'])]);
@@ -55,6 +55,7 @@ class MaterialMutation extends Component
     {
         $this->validate();
         $this->resetErrorBag();
+        $this->data['created_at'] = $this->date . ' ' . Carbon::now()->format('H:i');
 
         $datas = Model::find($this->dataId);
         $material = Material::find($datas->material_id);
@@ -62,7 +63,6 @@ class MaterialMutation extends Component
         $material->update(['stock' => $material->stock - ($mutation->indicator * $datas->amount)]);
 
         $this->data['report_id'] = null;
-        $this->data['created_at'] = $this->date . ' ' . Carbon::now()->format('H:i');
         $datas->update($this->data);
         $material = Material::find($this->data['material_id']);
         $mutation = MutationStatus::find($this->data['mutation_status_id']);
