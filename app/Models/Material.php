@@ -27,16 +27,14 @@ class Material extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id','material_type_id', 'name', 'stock', 'note', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'name', 'stock', 'note', 'created_at', 'updated_at'];
 
     public static function search($query)
     {
         return empty($query) ? static::query()
             : static::where('name', 'like', '%' . $query . '%')
                 ->orWhere('note', 'like', '%' . $query . '%')
-                ->orWhereHas('materialType', function ($q) use ($query) {
-                    $q->where('title', 'like', '%' . $query . '%');
-                });
+                ;
     }
 
 
@@ -56,10 +54,10 @@ class Material extends Model
     /**
      * @return BelongsTo
      */
-    public function materialType()
-    {
-        return $this->belongsTo('App\Models\MaterialType');
-    }
+//    public function materialType()
+//    {
+//        return $this->belongsTo('App\Models\MaterialType');
+//    }
 
     public function materialMutation(){
         return $this->hasMany('App\Models\MaterialMutation');

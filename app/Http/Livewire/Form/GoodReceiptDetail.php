@@ -19,7 +19,7 @@ class GoodReceiptDetail extends Component
         $this->setData();
         $this->optionMaterial=[];
         foreach (Material::get() as $detail){
-            $this->optionMaterial[] = ['title' => $detail->materialType->title . " " . $detail->name, 'value' => $detail->id];
+            $this->optionMaterial[] = ['title' => $detail->name, 'value' => $detail->id];
         }
 
     }

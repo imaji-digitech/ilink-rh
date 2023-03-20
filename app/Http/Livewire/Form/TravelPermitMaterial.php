@@ -16,7 +16,7 @@ class TravelPermitMaterial extends Component
     {
         $this->optionMaterial=[];
         foreach (\App\Models\Material::get() as $detail){
-            $this->optionMaterial[] = ['title' => $detail->materialType->title . " " . $detail->name, 'value' => $detail->id];
+            $this->optionMaterial[] = ['title' => $detail->name, 'value' => $detail->id];
         }
         $this->setData();
     }

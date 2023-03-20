@@ -5,9 +5,9 @@
                 <th><a wire:click.prevent="sortBy('id')" role="button" href="#">
                         # @include('components.sort-icon', ['field' => 'id'])
                     </a></th>
-                <th><a wire:click.prevent="sortBy('material_type_id')" role="button" href="#">
-                        Jenis material @include('components.sort-icon', ['field' => 'material_type_id'])
-                    </a></th>
+{{--                <th><a wire:click.prevent="sortBy('material_type_id')" role="button" href="#">--}}
+{{--                        Jenis material @include('components.sort-icon', ['field' => 'material_type_id'])--}}
+{{--                    </a></th>--}}
 
                 <th><a wire:click.prevent="sortBy('name')" role="button" href="#">
                         Material @include('components.sort-icon', ['field' => 'name'])
@@ -20,7 +20,7 @@
             @foreach ($datas as $index=>$data)
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
                     <td>{{ $index+1 }}</td>
-                    <td>{{ $data->materialType->title }}</td>
+{{--                    <td>{{ $data->materialType->title }}</td>--}}
                     <td>{{ $data->name }}</td>
                     <td>{{ thousand_format($data->stock) }}</td>
                     <td class="whitespace-no-wrap row-action--icon">

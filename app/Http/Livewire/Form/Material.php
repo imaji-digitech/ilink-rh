@@ -15,7 +15,7 @@ class Material extends Component
 
     public function mount()
     {
-        $this->optionMaterialType= eloquent_to_options(MaterialType::get());
+//        $this->optionMaterialType= eloquent_to_options(MaterialType::get());
         $this->data = form_model(Model::class, $this->dataId);
     }
 

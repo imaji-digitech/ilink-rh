@@ -12,7 +12,7 @@
             @foreach($travelPermit->travelPermitDetails as $detail)
                 <tr>
                     <td><a href="#" wire:click="delete({{$detail->id}})"><i class="fa fa-trash"></i></a> </td>
-                    <td>{{ $detail->material->materialType->title.' - '.$detail->material->name }}</td>
+                    <td>{{ $detail->material->name }}</td>
                     <td>{{ thousand_format($detail->quantity).$detail->quantity_type }}</td>
                     <td>{{ $detail->note }}</td>
                 </tr>

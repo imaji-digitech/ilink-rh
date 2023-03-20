@@ -22,7 +22,7 @@ class MaterialMutation extends Component
     {
         $this->optionMaterial = [];
         foreach (Material::get() as $detail) {
-            $this->optionMaterial[] = ['title' => $detail->materialType->title . " " . $detail->name, 'value' => $detail->id];
+            $this->optionMaterial[] = ['title' => $detail->name, 'value' => $detail->id];
         }
         $this->optionStatus = eloquent_to_options(MutationStatus::get());
         $this->data = form_model(Model::class, $this->dataId);
