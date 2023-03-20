@@ -14,7 +14,7 @@
                     </a></th>
                 <th>Jumlah</th>
                 <th>Catatan</th>
-                <th>Dilaporkan pada</th>
+{{--                <th>Dilaporkan pada</th>--}}
                 <th>Aksi</th>
             </tr>
         </x-slot>
@@ -26,7 +26,7 @@
                     <td>{{ $data->mutationStatus->title }}</td>
                     <td>{{ thousand_format($data->amount) }}</td>
                     <td>{{ $data->note }}</td>
-                    <td>{{ $data->created_at!=$data->updated_at?$data->updated_at:'' }}</td>
+{{--                    <td>{{ $data->created_at!=$data->updated_at?$data->updated_at:'' }}</td>--}}
                     <td>
                         @if(auth()->user()->role==1)
 {{--                        @if($data->report_id==null)--}}
