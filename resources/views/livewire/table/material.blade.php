@@ -12,7 +12,7 @@
                 <th><a wire:click.prevent="sortBy('name')" role="button" href="#">
                         Material @include('components.sort-icon', ['field' => 'name'])
                     </a></th>
-                <th>Stock</th>
+{{--                <th>Stock</th>--}}
                 <th>Aksi</th>
             </tr>
         </x-slot>
@@ -22,7 +22,7 @@
                     <td>{{ $index+1 }}</td>
 {{--                    <td>{{ $data->materialType->title }}</td>--}}
                     <td>{{ $data->name }}</td>
-                    <td>{{ thousand_format($data->stock) }}</td>
+{{--                    <td>{{ thousand_format($data->stock) }}</td>--}}
                     <td class="whitespace-no-wrap row-action--icon">
                         <a href="{{ route('material.show',$data->id) }}" class="btn btn-secondary">Riwayat mutasi</a>
                         @if(auth()->user()->role==1)
