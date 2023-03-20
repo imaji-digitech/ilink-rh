@@ -28,9 +28,11 @@
                     <td>{{ $data->note }}</td>
                     <td>{{ $data->created_at!=$data->updated_at?$data->updated_at:'' }}</td>
                     <td>
+                        @if(auth()->user()->role==1)
 {{--                        @if($data->report_id==null)--}}
                             <a href="{{ route('material-mutation.edit',$data->id) }}" class="btn btn-primary">Ubah</a>
 {{--                        @endif--}}
+                        @endif
                     </td>
                 </tr>
             @endforeach

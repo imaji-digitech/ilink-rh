@@ -30,10 +30,11 @@
                     <td>
                         <div class="row">
 {{--                            @if(config('app.name', 'Laravel')=='Laravel')--}}
+                            @if(auth()->user()->role==1)
                             <a href="#" wire:click="report({{ $data->id }})" class="btn-primary btn mb-1">Report  <i class="fa fa-retweet"></i> </a>
                                 <a href="#" wire:click="deleteItem({{ $data->id }})"
                                    class="btn btn-danger m-1 col">Hapus</a>
-{{--                            @endif--}}
+                            @endif
                             <a href="{{ route('report.show',$data->id) }}" class="btn-secondary btn">Detail</a>
                         </div>
                     </td>

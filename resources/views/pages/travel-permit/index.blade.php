@@ -8,8 +8,9 @@
             <div class="card">
                 <div class="card-body">
 {{--                    @if( config('app.name', 'Laravel')=='Laravel' )--}}
+                    @if(auth()->user()->role==1)
                     <a href="{{ route('travel-permit.create') }}" class="btn btn-primary">Tambah data surat jalan</a>
-{{--                    @endif--}}
+                    @endif
                     <livewire:table.main name="travel-permit"/>
                 </div>
             </div>

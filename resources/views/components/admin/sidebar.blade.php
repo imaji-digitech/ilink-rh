@@ -35,11 +35,11 @@
                         </a>
                     </li>
                     @if(auth()->id()!=6)
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('report.index') }}">
-                                <i class="fas fa-home"></i><span> Report bulanan</span>
-                            </a>
-                        </li>
+{{--                        <li class="sidebar-list">--}}
+{{--                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('report.index') }}">--}}
+{{--                                <i class="fas fa-home"></i><span> Report bulanan</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         <li class="sidebar-main-title">
                             <div><h6>Pengolahan</h6></div>
                         </li>
@@ -56,17 +56,17 @@
                         <li class="sidebar-main-title">
                             <div><h6>Surat & keuangan</h6></div>
                         </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('invoice.index') }}">
-                                <i class="fas fa-inbox"></i><span> Invoice</span>
-                            </a>
-                        </li>
+{{--                        <li class="sidebar-list">--}}
+{{--                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('invoice.index') }}">--}}
+{{--                                <i class="fas fa-inbox"></i><span> Invoice</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('receipt.index') }}">
-                                <i class="fas fa-file-archive"></i><span> Kwitansi</span>
-                            </a>
-                        </li>
+{{--                        <li class="sidebar-list">--}}
+{{--                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('receipt.index') }}">--}}
+{{--                                <i class="fas fa-file-archive"></i><span> Kwitansi</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
                         <li class="sidebar-list">
                             <a class="sidebar-link sidebar-title link-nav" href="{{ route('travel-permit.index') }}">

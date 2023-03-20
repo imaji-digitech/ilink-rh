@@ -8,8 +8,9 @@
             <div class="card">
                 <div class="card-body">
 {{--                    @if(config('app.name', 'Laravel')=='Laravel')--}}
+                    @if(auth()->user()->role==1)
                     <a href="{{ route('invoice.create') }}" class="btn btn-primary">Tambah data invoice</a>
-{{--                    @endif--}}
+                    @endif
                     <livewire:table.main name="invoice"/>
                 </div>
             </div>

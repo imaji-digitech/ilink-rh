@@ -31,10 +31,10 @@ class DashboardData extends Component
 
     public function mount()
     {
-        if ($this->date==null){
+        if ($this->date == null) {
             $this->now = Carbon::now();
-        }else{
-            $this->now= Carbon::parse($this->date);
+        } else {
+            $this->now = Carbon::parse($this->date);
         }
 
         $this->getIoMutation();
@@ -69,8 +69,7 @@ GROUP BY day(created_at)";
 FROM material_mutations
 WHERE mutation_status_id=5 AND
       MONTH(created_at)=$now->month
-GROUP BY day(created_at)
-";
+GROUP BY day(created_at)";
         $temp = DB::select(DB::raw($query));
         foreach ($temp as $t) {
             $this->ioMutation['data'][1][$t->date] = $t->value;
@@ -126,19 +125,25 @@ GROUP BY day(created_at)
     public function getGeneralData()
     {
         $now = $this->now;
-        $this->generalData['travel_permit'] = TravelPermit::whereMonth('created_at', $now->month)->count();
-        $this->generalData['receipt'] = Receipt::whereMonth('created_at', '=', $now->month)->count();
-        $this->generalData['invoice'] = Invoice::whereMonth('created_at', $now->month)->count();
-        $this->generalData['good_receipt'] = GoodReceipt::whereMonth('created_at', $now->month)->count();
+        $this->generalData['travel_permit']
+            = TravelPermit::whereMonth('created_at', $now->month)->count();
+        $this->generalData['receipt'] = Receipt::whereMonth('created_at', '=',
+            $now->month)->count();
+        $this->generalData['invoice'] = Invoice::whereMonth('created_at',
+            $now->month)->count();
+        $this->generalData['good_receipt']
+            = GoodReceipt::whereMonth('created_at', $now->month)->count();
     }
 
     public function getPieData()
     {
         $this->mutation = [];
         $now = $this->now;
-        $query = "SELECT title, (SELECT sum(amount) FROM material_mutations WHERE mutation_status_id=ms.id) as value FROM mutation_statuses as ms";
+        $query
+            = "SELECT title, (SELECT sum(amount) FROM material_mutations WHERE mutation_status_id=ms.id) as value FROM mutation_statuses as ms";
         $this->mutationData = DB::select(DB::raw($query));
-        $query = "SELECT title, (SELECT sum(amount) FROM material_mutations WHERE mutation_status_id=ms.id and MONTH(created_at)=$now->month) as value FROM mutation_statuses as ms";
+        $query
+            = "SELECT title, (SELECT sum(amount) FROM material_mutations WHERE mutation_status_id=ms.id and MONTH(created_at)=$now->month) as value FROM mutation_statuses as ms";
         $this->mutationDataThisMonth = DB::select(DB::raw($query));
         foreach (MutationStatus::get() as $ms) {
             $query = "SELECT materials.name as title, SUM(material_mutations.amount) as value

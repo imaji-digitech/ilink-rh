@@ -29,15 +29,17 @@
                     <td class="whitespace-no-wrap row-action--icon" style="width: 29%">
                         <div class="row">
 {{--                            @if(config('app.name', 'Laravel')=='Laravel')--}}
+                            @if(auth()->user()->role==1)
                                 <a href="{{ route('good-receipt.edit',$data->id) }}"
                                    class="btn btn-dark m-1 col">Ubah</a>
                                 <a href="{{ route('good-receipt.show',$data->id) }}" class="btn btn-primary m-1 col">Detail</a>
-{{--                            @endif--}}
+                            @endif
                             <a href="{{ route('good-receipt.download',$data->id) }}"
                                class="btn btn-success m-1 col" target="_blank">
                                 Unduh
                             </a>
-{{--                            @if(config('app.name', 'Laravel')=='Laravel')--}}
+
+                            @if(auth()->user()->role==1)
                                 @if($data->good_receipt_mutation_id==null)
                                     <a href="{{ route('good-receipt.mutation',[$data->id,1]) }}"
                                        class="btn btn-danger m-1 col">Selesai</a>
@@ -46,7 +48,7 @@
                                     <a href="#" wire:click="deleteItem({{ $data->id }})"
                                        class="btn btn-danger m-1 col">Hapus</a>
                                 @endif
-{{--                            @endif--}}
+                            @endif
                         </div>
 
                     </td>
