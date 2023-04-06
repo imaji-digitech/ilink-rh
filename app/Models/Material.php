@@ -46,7 +46,6 @@ class Material extends Model
     public static function getRules()
     {
         return [
-            'data.material_type_id' => "required",
             'data.name' => "required|max:255",
         ];
     }
