@@ -17,24 +17,41 @@
                     </a></th>
                 <th>Jumlah</th>
                 <th>Catatan</th>
-                <th>Dilaporkan pada</th>
                 <th>Aksi</th>
             </tr>
         </x-slot>
         <x-slot name="body">
             @foreach ($datas as $index=>$data)
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
-                    <td>{{ $data->created_at }}</td>
+                    <td>{{ $data->created_at->format('d-m-Y') }}</td>
                     <td>{{ $data->material->name }}</td>
                     <td>{{ $data->user->name }}</td>
-                    <td>{{ $data->mutationStatus->title }}</td>
-                    <td>{{ thousand_format($data->amount) }}</td>
-                    <td>{{ $data->note }}</td>
-                    <td>{{ $data->created_at!=$data->updated_at?$data->updated_at:'' }}</td>
                     <td>
-                        {{--    @if($data->report_id==null)--}}
-                        <a href="{{ route('material-mutation.edit',$data->id) }}" class="btn btn-primary">Ubah</a>
-                        {{--    @endif--}}
+                        {{ $data->mutationStatus->title }}
+{{--                        <div class="btn btn-warning">--}}
+{{--                            <i class="fas fa-sync"></i>--}}
+{{--                        </div>--}}
+{{--                        <br><br>--}}
+{{--                        <div class="btn btn-success">--}}
+{{--                            <i class="fas fa-upload"></i>--}}
+{{--                        </div>--}}
+{{--                        <br><br>--}}
+{{--                        <div class="btn btn-primary">--}}
+{{--                            <i class="fas fa-download"></i>--}}
+{{--                        </div>--}}
+
+                    </td>
+                    <td style="text-align: center">{{ thousand_format($data->amount) }}</td>
+                    <td>
+                        <div style="width:200px">
+                            {{ $data->note }}
+                        </div>
+                    </td>
+{{--                    <td>{{ $data->created_at!=$data->updated_at?$data->updated_at:'' }}</td>--}}
+                    <td>
+                        <div style="width:100px" class="row">
+                        <a href="{{ route('material-mutation.edit',$data->id) }}" class="btn btn-primary col">Ubah</a>
+                        </div>
                     </td>
                 </tr>
             @endforeach

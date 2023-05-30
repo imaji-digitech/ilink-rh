@@ -33,7 +33,9 @@ class GoodReceiptController extends Controller
                     'user_id' => auth()->id(),
                     'mutation_status_id' => 4,
                     'amount' => $grd->quantity,
-                    'note' => "barang dari $receipt->good_receipt_number"
+                    'note' => "barang dari $receipt->good_receipt_number",
+                    'created_at'=> $receipt->created_at,
+                    'updated_at'=> $receipt->updated_at,
                 ]);
                 $material->update(['stock'=>$material->stock+$grd->quantity]);
             }

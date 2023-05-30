@@ -8,9 +8,9 @@
             <div class="card">
                 <div class="card-body">
 {{--                    @if(config('app.name', 'Laravel')=='Laravel')--}}
-                    @if(auth()->user()->role==1)
+{{--                    @if(auth()->user()->role==1)--}}
                     <a href="{{ route('good-receipt.create') }}" class="btn btn-primary">Tambah data tanda terima barang</a>
-                    @endif
+{{--                    @endif--}}
                     <livewire:table.main name="good-receipt"/>
                 </div>
             </div>

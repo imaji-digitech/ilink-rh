@@ -18,9 +18,7 @@
         <x-slot name="body">
             @foreach ($datas as $index=>$data)
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
-                    <td>
-                        {{ $data->created_at->format('d-m-Y') }}
-                    </td>
+                    <td>{{ $data->created_at->format('d-m-Y') }}</td>
                     <td>{{ $data->user->name }}</td>
                     <td>{{ $data->good_receipt_number }}</td>
                     <td>{{ $data->sender }} </td>
