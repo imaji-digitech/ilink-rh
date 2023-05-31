@@ -38,14 +38,13 @@ $this->errorMessage="Tanggal mulai dan akhir silahkan di isi";
                 $file = fopen('php://output', 'w');
                 fputcsv($file, [''], $delimiter);
                 fputcsv($file, [
-                    'Tanggal', 'PIC', 'Material', 'Status Proses', 'Jumlah',
-                    'Catatan',
+                    'Tanggal', 'Material', 'Status Proses', 'Jumlah',
                 ], $delimiter);
                 foreach ($materialMutation as $mm) {
                     fputcsv($file, [
-                        $mm->created_at->format('d M Y'), $mm->user->name,
+                        $mm->created_at->format('d M Y'),
                         $mm->material->name, $mm->mutationStatus->title,
-                        thousand_format($mm->amount), $mm->note,
+                        thousand_format($mm->amount),
                     ], $delimiter);
                 }
                 fclose($file);
