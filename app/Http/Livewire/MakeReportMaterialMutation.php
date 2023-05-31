@@ -43,7 +43,7 @@ $this->errorMessage="Tanggal mulai dan akhir silahkan di isi";
                 ], $delimiter);
                 foreach ($materialMutation as $mm) {
                     fputcsv($file, [
-                        $mm->created_at, $mm->user->name,
+                        $mm->created_at->format('d M Y'), $mm->user->name,
                         $mm->material->name, $mm->mutationStatus->title,
                         thousand_format($mm->amount), $mm->note,
                     ], $delimiter);
