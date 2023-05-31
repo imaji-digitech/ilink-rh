@@ -7,6 +7,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
+                    <livewire:make-report-material-mutation/>
 {{--                    @if(config('app.name', 'Laravel')=='Laravel')--}}
 {{--                    @if(auth()->user()->role==1)--}}
                     <a href="{{ route('good-receipt.create') }}" class="btn btn-primary">Tambah data tanda terima barang</a>
