@@ -48,7 +48,7 @@ class MaterialMutation extends Component
             'timeout' => 3000,
             'icon' => 'success'
         ]);
-        $this->emit('redirect', route('material.index'));
+        $this->emit('redirect', route('material-mutation'));
     }
 
     public function update()
