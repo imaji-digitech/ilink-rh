@@ -8,6 +8,8 @@
             <div class="card">
                 <div class="card-body">
 {{--                    @if(config('app.name', 'Laravel')=='Laravel')--}}
+                    <livewire:make-report-material-mutation/>
+
                     @if(auth()->user()->role==1)
                     <a href="{{ route('material-mutation.create') }}" class="btn btn-primary">Mutasi material</a>
                     @endif
