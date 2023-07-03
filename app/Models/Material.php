@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Krlove\EloquentModelGenerator\Model\HasMany;
 
 /**
  * @property integer $id
@@ -27,12 +28,13 @@ class Material extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id', 'name', 'stock', 'note', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'name', 'type','stock', 'note', 'created_at', 'updated_at'];
 
     public static function search($query)
     {
         return empty($query) ? static::query()
             : static::where('name', 'like', '%' . $query . '%')
+                ->orWhere('type', 'like', '%' . $query . '%')
                 ->orWhere('note', 'like', '%' . $query . '%')
                 ;
     }
@@ -40,25 +42,21 @@ class Material extends Model
 
     public static function getForm()
     {
-        return ['material_type_id', 'name', 'note',];
+        return ['material_type_id', 'name', 'note','type'];
     }
 
     public static function getRules()
     {
         return [
             'data.name' => "required|max:255",
+            'data.type' => "required|max:255",
         ];
     }
 
     /**
-     * @return BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-//    public function materialType()
-//    {
-//        return $this->belongsTo('App\Models\MaterialType');
-//    }
-
-    public function materialMutation(){
+    public function materialMutations(){
         return $this->hasMany('App\Models\MaterialMutation');
     }
 }

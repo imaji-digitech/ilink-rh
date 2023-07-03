@@ -62,10 +62,12 @@ class GoodReceipt extends Model
     public static function search($query)
     {
         return empty($query) ? static::query()
-            : static::where('name', 'like', '%' . $query . '%')
-                ->orWhere('no_ktp', 'like', '%' . $query . '%')
-                ->orWhere('address', 'like', '%' . $query . '%')
-                ->orWhere('no_phone', 'like', '%' . $query . '%');
+            : static::where('good_receipt_number', 'like', '%' . $query . '%')
+                ->orWhere('condition', 'like', '%' . $query . '%')
+                ->orWhere('sender', 'like', '%' . $query . '%')
+                ->orWhereHas('user',function ($q) use ($query){
+                    $q->where('name', 'like', '%' . $query . '%');
+                });
     }
 
     /**
