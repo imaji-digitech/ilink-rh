@@ -35,7 +35,7 @@ class GoodReceipt extends Model
     {
         return ['good_receipt_number', 'sender', 'condition'];
     }
-    public static function getCode($created_at)
+    public static function getCode($created_at=null)
     {
         if ($created_at!=null){
             $now = Carbon::parse($created_at);
