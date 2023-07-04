@@ -45,7 +45,6 @@ class GoodReceipt extends Model
         $count = GoodReceipt::whereMonth('created_at', $now->month)
                 ->whereYear('created_at', $now->year)
                 ->get()->count()+1;
-        dd($now);
         $date = $now->day;
         $month = numberToRomanRepresentation($now->month);
         $year = $now->year;
