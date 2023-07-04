@@ -35,9 +35,9 @@ class GoodReceipt extends Model
     {
         return ['good_receipt_number', 'sender', 'condition'];
     }
-    public static function getCode($created_at=null)
+    public static function getCode($created_at)
     {
-        if ($created_at==null){
+        if ($created_at!=null){
             $now = Carbon::parse($created_at);
         }else{
             $now=Carbon::now();
@@ -45,6 +45,7 @@ class GoodReceipt extends Model
         $count = GoodReceipt::whereMonth('created_at', $now->month)
                 ->whereYear('created_at', $now->year)
                 ->get()->count()+1;
+        dd($now);
         $date = $now->day;
         $month = numberToRomanRepresentation($now->month);
         $year = $now->year;
