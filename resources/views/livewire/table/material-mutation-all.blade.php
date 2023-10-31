@@ -3,8 +3,8 @@
         <x-slot name="head">
             <tr>
                 {{--                'material_id', 'user_id', 'mutation_status_id', 'report_id', 'amount', 'note',--}}
-                <th><a wire:click.prevent="sortBy('id')" role="button" href="#">
-                        # @include('components.sort-icon', ['field' => 'id'])
+                <th><a wire:click.prevent="sortBy('created_at')" role="button" href="#">
+                        # @include('components.sort-icon', ['field' => 'created_at'])
                     </a></th>
                 <th><a wire:click.prevent="sortBy('material_id')" role="button" href="#">
                         Material @include('components.sort-icon', ['field' => 'material_id'])

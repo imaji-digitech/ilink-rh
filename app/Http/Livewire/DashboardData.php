@@ -57,7 +57,7 @@ class DashboardData extends Component
         $query = "SELECT DAY(created_at) as date, SUM(amount) as value
 FROM material_mutations
 WHERE mutation_status_id=4 AND
-      MONTH(created_at)=$now->month
+      MONTH(created_at)=$now->month and YEAR(created_at)=$now->year
 GROUP BY day(created_at)";
 
         $temp = DB::select(DB::raw($query));
@@ -68,7 +68,7 @@ GROUP BY day(created_at)";
         $query = "SELECT DAY(created_at) as date, SUM(amount) as value
 FROM material_mutations
 WHERE mutation_status_id=5 AND
-      MONTH(created_at)=$now->month
+      MONTH(created_at)=$now->month and YEAR(created_at)=$now->year
 GROUP BY day(created_at)";
         $temp = DB::select(DB::raw($query));
         foreach ($temp as $t) {
@@ -92,7 +92,7 @@ GROUP BY day(created_at)";
         $query = "SELECT DAY(created_at) as date, SUM(amount) as value
 FROM material_mutations
 WHERE mutation_status_id=1 AND
-      MONTH(created_at)=$now->month
+      MONTH(created_at)=$now->month and YEAR(created_at)=$now->year
 GROUP BY day(created_at)
 ";
         $temp = DB::select(DB::raw($query));
@@ -103,7 +103,7 @@ GROUP BY day(created_at)
         $query = "SELECT DAY(created_at) as date, SUM(amount) as value
 FROM material_mutations
 WHERE mutation_status_id=2 AND
-      MONTH(created_at)=$now->month
+      MONTH(created_at)=$now->month and YEAR(created_at)=$now->year
 GROUP BY day(created_at)
 ";
         $temp = DB::select(DB::raw($query));
@@ -113,7 +113,7 @@ GROUP BY day(created_at)
         $query = "SELECT DAY(created_at) as date, SUM(amount) as value
 FROM material_mutations
 WHERE mutation_status_id=3 AND
-      MONTH(created_at)=$now->month
+      MONTH(created_at)=$now->month and YEAR(created_at)=$now->year
 GROUP BY day(created_at)
 ";
         $temp = DB::select(DB::raw($query));
@@ -143,13 +143,13 @@ GROUP BY day(created_at)
             = "SELECT title, (SELECT sum(amount) FROM material_mutations WHERE mutation_status_id=ms.id) as value FROM mutation_statuses as ms";
         $this->mutationData = DB::select(DB::raw($query));
         $query
-            = "SELECT title, (SELECT sum(amount) FROM material_mutations WHERE mutation_status_id=ms.id and MONTH(created_at)=$now->month) as value FROM mutation_statuses as ms";
+            = "SELECT title, (SELECT sum(amount) FROM material_mutations WHERE mutation_status_id=ms.id and MONTH(created_at)=$now->month and YEAR(created_at)=$now->year) as value FROM mutation_statuses as ms";
         $this->mutationDataThisMonth = DB::select(DB::raw($query));
         foreach (MutationStatus::get() as $ms) {
             $query = "SELECT materials.name as title, SUM(material_mutations.amount) as value
 FROM `material_mutations`
 JOIN materials ON material_mutations.material_id=materials.id
-WHERE mutation_status_id=$ms->id AND MONTH(material_mutations.created_at)=$now->month
+WHERE mutation_status_id=$ms->id AND MONTH(material_mutations.created_at)=$now->month and YEAR(material_mutations.created_at)=$now->year
 GROUP BY materials.name";
             $this->mutation[$ms->id]['data'] = DB::select(DB::raw($query));
             $this->mutation[$ms->id]['title'] = $ms->title;

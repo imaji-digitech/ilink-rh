@@ -1,4 +1,4 @@
-@props(['title','data','size'=>6,'legend'=>'right','unit'=>''])
+@props(['title','data','size'=>6,'legend'=>'right','unit'=>'kg'])
 @php($id=generateRandomString())
 <div class="col-xl-{{$size}} appointment box-col-{{$size}}">
     <div class="card">
@@ -29,7 +29,7 @@
             },
             dataLabels: {
                 formatter: function (val, opts) {
-                    return val.toFixed() + '%  (' + opts.w.config.series[opts.seriesIndex].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + '{{ $unit }})';
+                    return val.toFixed() + '%  ' + opts.w.config.series[opts.seriesIndex].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + 'kg';
                 },
             },
             chart: {
@@ -51,7 +51,7 @@
             },
             series: [
                 @foreach($data as $md)
-                    {{ ($md->value!=null)?$md->value:0 }},
+                    {{ ($md->value!=null)?intval($md->value):0 }},
                 @endforeach
             ],
 
@@ -74,7 +74,7 @@
                     },
                     donut: {
                         size: '65%',
-                        bac{{ $unit }}round: 'transparent',
+                        round: 'transparent',
                         labels: {
                             show: true,
                             name: {
@@ -85,7 +85,7 @@
                                 color: undefined,
                                 offsetY: -10,
                                 formatter: function (val) {
-                                    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "{{$unit}}"
+                                    return +val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+"kg"
                                 }
                             },
                             value: {
@@ -96,7 +96,7 @@
                                 color: undefined,
                                 offsetY: 16,
                                 formatter: function (val) {
-                                    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "{{ $unit }}"
+                                    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+"kg"
                                 }
                             },
                             total: {
@@ -109,7 +109,7 @@
                                 formatter: function (w) {
                                     return w.globals.seriesTotals.reduce((a, b) => {
                                         return (a + b)
-                                    }, 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "{{ $unit }}"
+                                    }, 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+"kg"
                                 }
                             }
                         }
