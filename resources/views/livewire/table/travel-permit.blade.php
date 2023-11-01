@@ -13,6 +13,9 @@
                         Kendaraan @include('components.sort-icon', ['field' => 'user_id'])
                     </a></th>
                 <th>Nama / Perusahaan</th>
+                <th><a wire:click.prevent="sortBy('created_at')" role="button" href="#">
+                        Tanggal @include('components.sort-icon', ['field' => 'created_at'])
+                    </a></th>
                 <th>Alamat</th>
                 <th>Aksi</th>
             </tr>
@@ -24,6 +27,7 @@
                     <td>{{ $data->user->name }}</td>
                     <td>{{ $data->vehicle }} / {{ $data->vehicle_number }}</td>
                     <td>{{ $data->name." ($data->no_phone)" }} <br> <b>{{ $data->company }}</b></td>
+                    <td>{{ $data->created_at->format('d-m-Y') }}</td>
                     <td>{{ $data->address }}</td>
                     <td class="whitespace-no-wrap row-action--icon">
 {{--                        @if(config('app.name', 'Laravel')=='Laravel')--}}
