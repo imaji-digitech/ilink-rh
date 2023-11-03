@@ -7,7 +7,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    @php($months = [7,8,9,10])
+                    @php($months = [1,2,3,4,5,6,7,8,9,10])
                     @foreach($months as $month)
                         Rekap bulan {{ $month }}-2023 <br>
                         Jumlah Barang Masuk : {{ \App\Models\MaterialMutation::where('mutation_status_id','=',4)->whereMonth('created_at',$month)->whereYear('created_at',2023)->get()->sum('amount') }}
