@@ -29,6 +29,9 @@ Route::get('/', function () {
 
 Route::post('/summernote', [SupportController::class, 'upload'])->name('summernote');
 Route::middleware(['auth:sanctum',])->group(function () {
+    Route::get('report-all-month',function (){
+        return view('pages.report-all-month');
+    })->name('report-all-month');
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
