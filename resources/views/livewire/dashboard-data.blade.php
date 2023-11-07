@@ -1,4 +1,6 @@
 <div>
+    @if(auth()->user()->role==1)
+
 
     <div class="row">
         <div class="col-sm-6 col-xl-3 col-lg-6">
@@ -16,6 +18,7 @@
             <x-simple-card icon="log-in" title="Barang masuk" color="bg-primary" :value="$generalData['good_receipt']"/>
         </div>
     </div>
+    @endif
     <div class="row">
         <x-data-pie :data="$mutationData" title="Mutasi material keseluruhan" unit="Kg"/>
         <x-data-pie :data="$mutationDataThisMonth" title="Mutasi material bulan ini" unit="Kg"/>
