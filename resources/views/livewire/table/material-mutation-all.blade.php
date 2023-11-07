@@ -17,7 +17,9 @@
                     </a></th>
                 <th>Jumlah</th>
                 <th>Catatan</th>
+                @if(auth()->user()->role==1)
                 <th>Aksi</th>
+                @endif
             </tr>
         </x-slot>
         <x-slot name="body">
@@ -48,11 +50,13 @@
                         </div>
                     </td>
 {{--                    <td>{{ $data->created_at!=$data->updated_at?$data->updated_at:'' }}</td>--}}
+                    @if(auth()->user()->role==1)
                     <td>
                         <div style="width:100px" class="row">
                         <a href="{{ route('material-mutation.edit',$data->id) }}" class="btn btn-primary col">Ubah</a>
                         </div>
                     </td>
+                    @endif
                 </tr>
             @endforeach
         </x-slot>

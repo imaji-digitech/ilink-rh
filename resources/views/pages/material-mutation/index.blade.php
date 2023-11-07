@@ -5,11 +5,13 @@
 
     <div class="container-fluid">
         <div class="row">
+            @if(auth()->user()->role==1)
             <div class="card">
                 <div class="card-body">
                     <livewire:make-report-material-mutation/>
                 </div>
             </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     @if(auth()->user()->role==1)
