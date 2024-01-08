@@ -43,8 +43,8 @@ $this->errorMessage="Tanggal mulai dan akhir silahkan di isi";
                     'Tanggal', 'Tipe','Material', 'Status Proses', 'Jumlah',
                 ], $delimiter);
                 foreach ($materialMutation as $mm) {
-                    if ($m!=$mm->mmutation_status_id){
-                        $m=$mm->mmutation_status_id;
+                    if ($m!=$mm->mutation_status_id){
+                        $m=$mm->mutation_status_id;
                         fputcsv($file, [''], $delimiter);
                         fputcsv($file, [
                             'Tanggal', 'Tipe','Material', 'Status Proses', 'Jumlah',
