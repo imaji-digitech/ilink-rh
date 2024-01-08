@@ -27,6 +27,10 @@ Route::get('/', function () {
     return redirect(route('dashboard'));
 });
 
+Route::get('/get-recap-2023',function (){
+
+});
+
 Route::post('/summernote', [SupportController::class, 'upload'])->name('summernote');
 Route::middleware(['auth:sanctum',])->group(function () {
     Route::get('report-all-month',function (){

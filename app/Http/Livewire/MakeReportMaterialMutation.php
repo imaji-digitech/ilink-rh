@@ -21,8 +21,9 @@ class MakeReportMaterialMutation extends Component
 $this->errorMessage="Tanggal mulai dan akhir silahkan di isi";
         } else {
             $materialMutation = MaterialMutation::whereBetween('created_at',
-                [$this->dateStart, $this->dateEnd])->orderBy('created_at')
-                                                ->get();
+                [$this->dateStart, $this->dateEnd])->orderBy('mutation_status_id')
+                ->orderBy('created_at')
+                ->get();
             $fileName
                 = Str::slug("Rekap Mutasi $this->dateStart - $this->dateEnd")
                 .".csv";
@@ -36,11 +37,19 @@ $this->errorMessage="Tanggal mulai dan akhir silahkan di isi";
             $callback = function () use ($materialMutation) {
                 $delimiter = ';';
                 $file = fopen('php://output', 'w');
+                $m=0;
                 fputcsv($file, [''], $delimiter);
                 fputcsv($file, [
                     'Tanggal', 'Tipe','Material', 'Status Proses', 'Jumlah',
                 ], $delimiter);
                 foreach ($materialMutation as $mm) {
+                    if ($m!=$mm->mmutation_status_id){
+                        $m=$mm->mmutation_status_id;
+                        fputcsv($file, [''], $delimiter);
+                        fputcsv($file, [
+                            'Tanggal', 'Tipe','Material', 'Status Proses', 'Jumlah',
+                        ], $delimiter);
+                    }
                     fputcsv($file, [
                         $mm->created_at->format('d/M/Y'),
                         $mm->material->type,
